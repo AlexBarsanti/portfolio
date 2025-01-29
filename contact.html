@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Contact Page</title>
+  <link rel="stylesheet" href="https://use.typekit.net/yyf0myj.css">
+  <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+  <div class="top-bar">
+    <a href="index.html" class="home-button">Home</a>
+    <div class="nav-links">
+      <a href="photo.html" class="nav-button">Photo</a>
+      <a href="video.html" class="nav-button">Video</a>
+      <a href="graphic-design.html" class="nav-button">Graphic Design</a>
+      <a href="about.html" class="nav-button">About</a>
+      <a href="resume.pdf" class="nav-button" target="_blank">Resume</a>
+    </div>
+  </div>
+
+  <div class="contact-container">
+    <h2>Contact Me</h2>
+    <form action="https://formsubmit.co/alexbarsanti5@gmail.com" method="POST">
+      <input type="text" name="name" placeholder="Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="text" name="subject" placeholder="Subject" required>
+      <textarea name="message" placeholder="Message" required></textarea>
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://alexbarsanti.com/contact.html">
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</body>
+</html>
