@@ -1,49 +1,52 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: black;
+    background: linear-gradient(to bottom, #1a1a1a, #000000);
     color: white;
     font-family: 'acier-bat-noir', sans-serif;
 }
 
 .top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to right, #e0e0e0, #ffffff);
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: transparent;
+    padding: 20px 30px;
+    z-index: 10;
+    box-sizing: border-box;
 }
 
 .home-button {
-    color: white;
+    font-size: 28px;
+    color: black;
     text-decoration: none;
-    font-size: 24px;
-    transition: color 0.3s;
-}
-
-.home-button:hover {
-    color: #888;
+    font-weight: bold;
 }
 
 .nav-links {
     display: flex;
     gap: 20px;
+    position: relative;
+    left: -60px;
 }
 
 .nav-button {
-    color: white;
+    font-size: 20px;
+    color: black;
     text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s;
+    font-weight: bold;
 }
 
-.nav-button:hover {
-    color: #888;
+.home-button:hover, .nav-button:hover {
+    color: #333;
 }
 
 .contact-container {
     max-width: 600px;
-    margin: 50px auto;
+    margin: 120px auto;
     padding: 20px;
 }
 
@@ -92,17 +95,42 @@ button:hover {
 
 @media (max-width: 768px) {
     .top-bar {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
+        padding: 10px 15px;
+        justify-content: center;
     }
 
     .nav-links {
-        flex-direction: column;
-        gap: 10px;
+        display: none;
+    }
+
+    .home-button {
+        font-size: 24px;
+        position: static;
     }
 
     .contact-container {
-        margin: 20px auto;
+        margin: 80px auto;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-container {
+        padding: 15px;
+    }
+
+    input, textarea {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 24px;
     }
 }

@@ -34,6 +34,7 @@ body::before {
     justify-content: space-between;
     padding: 20px 30px;
     z-index: 10;
+    box-sizing: border-box;
 }
 
 .home-button {
@@ -181,30 +182,22 @@ body::before {
 
 @media (max-width: 768px) {
     .top-bar {
-        flex-direction: column;
-        align-items: center;
         padding: 10px 15px;
+        justify-content: center;
     }
 
     .nav-links {
-        margin-top: 10px;
-        position: static;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
+        display: none;
     }
 
     .home-button {
         font-size: 24px;
-    }
-
-    .nav-button {
-        font-size: 18px;
+        position: static;
     }
 
     .slideshow-container {
         width: 90%;
-        margin-top: 140px;
+        margin-top: 80px;
     }
 
     .prev, .next {
