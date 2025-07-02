@@ -6,8 +6,8 @@ const slideshowContainer = document.querySelector('.slideshow-container');
 const closeButton = document.querySelector('.close-button');
 const slideCounter = document.querySelector('.slide-counter');
 
-// Dynamically add 8 videos to the slideshow
-for (let i = 1; i <= 8; i++) {
+// Dynamically add 10 videos to the slideshow
+for (let i = 1; i <= 10; i++) {
     const video = document.createElement('video');
     video.src = `videos/video${i}.mp4`;
     video.alt = `Video ${i}`;
@@ -18,7 +18,7 @@ for (let i = 1; i <= 8; i++) {
 const slides = document.querySelectorAll('.slides video');
 
 function showSlide(index) {
-    slides.forEach(slide => {
+    slides.forEach((slide, i) => {
         slide.style.display = 'none';
         slide.pause(); // Pause all videos
     });
@@ -59,7 +59,9 @@ closeButton.addEventListener('click', (e) => {
     }
 });
 
-// Keyboard navigation
+// Keyboard navigation for fullscreen mode
+// Left/Right arrows to navigate, Escape to exit fullscreen
+
 document.addEventListener('keydown', (e) => {
     if (slideshowContainer.classList.contains('fullscreen')) {
         if (e.key === 'ArrowLeft') prevSlide();
