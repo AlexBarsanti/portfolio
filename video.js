@@ -8,7 +8,7 @@ const slideCounter = document.querySelector('.slide-counter');
 const descriptionBox = document.querySelector('.video-description');
 
 // Dynamically add 10 videos to the slideshow
-for (let i = 1; i <= 10; i++) {
+for (let i = 1; i <= 11; i++) {
     const video = document.createElement('video');
     video.src = `videos/video${i}.mp4`;
     video.alt = `Video ${i}`;
@@ -44,6 +44,9 @@ function showSlide(index) {
         descriptionBox.style.display = 'block';
     } else if (index === 7 || index === 8 || index === 9) {
         descriptionBox.textContent = "CalArts Experimental Animation";
+        descriptionBox.style.display = 'block';
+    } else if (index === 10) {
+        descriptionBox.textContent = "Tiitlecard created for USC production student Fletcher Simon in July 2025.";
         descriptionBox.style.display = 'block';
     } else {
         descriptionBox.style.display = 'none';

@@ -7,12 +7,21 @@ const closeButton = document.querySelector('.close-button');
 const slideCounter = document.querySelector('.slide-counter');
 
 // Add images to the slideshow
-for (let i = 1; i <= 4; i++) {
+const gdImages = [
+    'graphic-design/gd1.JPEG',
+    'graphic-design/gd2.PNG',
+    'graphic-design/gd3.JPG',
+    'graphic-design/gd4.JPG',
+    'graphic-design/gd5.JPG',
+    'graphic-design/gd6.JPG',
+    'graphic-design/gd7.jpg'
+];
+gdImages.forEach((src, i) => {
     const img = document.createElement('img');
-    img.src = `graphic-design/gd${i}.jpg`;  // Updated path to images
-    img.alt = `Graphic Design ${i}`;
+    img.src = src;
+    img.alt = `Graphic Design ${i + 1}`;
     slidesContainer.appendChild(img);
-}
+});
 
 const slides = document.querySelectorAll('.slides img');
 
