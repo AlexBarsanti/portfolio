@@ -65,15 +65,25 @@ class Slideshow {
 }
   
 // Generate image paths
+const graphicDesignImages = [
+    'graphic-design/gd1.JPEG',
+    'graphic-design/gd2.PNG',
+    'graphic-design/gd3.JPG',
+    'graphic-design/gd4.JPG',
+    'graphic-design/gd5.JPG',
+    'graphic-design/gd6.JPG',
+    'graphic-design/gd7.jpg'
+];
 const photographyImages = Array.from({length: 115}, (_, i) => `photos/photo${i + 1}.jpg`);
 const colorizationImages = Array.from({length: 20}, (_, i) => `commissioned color work/Jay${i + 1}.jpg`);
 const otherColorImages = Array.from({length: 14}, (_, i) => `color work/Color${i + 1}.jpg`);
 
 // Initialize slideshows
 const slideshowContainers = document.querySelectorAll('.slideshow-container');
-new Slideshow(slideshowContainers[0], photographyImages);
-new Slideshow(slideshowContainers[1], colorizationImages);
-new Slideshow(slideshowContainers[2], otherColorImages);
+new Slideshow(slideshowContainers[0], graphicDesignImages);
+new Slideshow(slideshowContainers[1], photographyImages);
+new Slideshow(slideshowContainers[2], colorizationImages);
+new Slideshow(slideshowContainers[3], otherColorImages);
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {

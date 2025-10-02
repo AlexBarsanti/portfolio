@@ -1,174 +1,200 @@
-const canvas = document.getElementById('backgroundCanvas');
-const ctx = canvas.getContext('2d');
+// Video Background Management
+const videoElement = document.getElementById('backgroundVideo');
+const videoBackground = document.getElementById('videoBackground');
 
-let width, height;
-let mouseX = 0;
-let mouseY = 0;
-let targetMouseX = 0;
-let targetMouseY = 0;
-let isMobile = window.innerWidth <= 768;
+// List of videos to cycle through
+const videoList = [
+    'videos/video1.mp4',
+    'videos/video2.mp4',
+    'videos/video3.mp4',
+    'videos/video4.mp4',
+    'videos/video5.mp4',
+    'videos/video6.MP4',
+    'videos/video7.mp4',
+    'videos/video8.mp4',
+    'videos/video9.mp4',
+    'videos/video10.MP4',
+    'videos/video11.mp4'
+];
 
-// Add noise canvas
-let noiseCanvas = document.createElement('canvas');
-let noiseCtx = noiseCanvas.getContext('2d');
+let currentVideoIndex = 0;
+let isTransitioning = false;
+let videoTimer = null;
 
-function setupNoise() {
-    // Reduce noise resolution on mobile for better performance
-    const scale = isMobile ? 2 : 1;
-    noiseCanvas.width = width / scale;
-    noiseCanvas.height = height / scale;
+// Function to load and play next video
+function loadNextVideo() {
+    if (isTransitioning) return;
     
-    // Generate static noise
-    const imageData = noiseCtx.createImageData(noiseCanvas.width, noiseCanvas.height);
-    const data = imageData.data;
+    isTransitioning = true;
+    currentVideoIndex = (currentVideoIndex + 1) % videoList.length;
     
-    for (let i = 0; i < data.length; i += 4) {
-        const value = Math.random() * 255;
-        data[i] = value;     // red
-        data[i + 1] = value; // green
-        data[i + 2] = value; // blue
-        data[i + 3] = isMobile ? 10 : 15;    // reduced alpha on mobile
+    // Clear any existing timer
+    if (videoTimer) {
+        clearTimeout(videoTimer);
+        videoTimer = null;
     }
     
-    noiseCtx.putImageData(imageData, 0, 0);
+    // Create fade out effect
+    videoElement.style.opacity = '0';
+    
+    setTimeout(() => {
+        videoElement.src = videoList[currentVideoIndex];
+        videoElement.muted = true; // Ensure muted
+        videoElement.volume = 0; // Set volume to 0
+        videoElement.load();
+        
+        videoElement.addEventListener('loadeddata', () => {
+            videoElement.play().then(() => {
+                videoElement.style.opacity = '1';
+                isTransitioning = false;
+                
+                // Set timer for next video based on video length
+                const videoDuration = videoElement.duration;
+                if (videoDuration && videoDuration > 28) {
+                    // If video is longer than 28 seconds, play for 28 seconds
+                    videoTimer = setTimeout(() => {
+                        loadNextVideo();
+                    }, 28000);
+                } else if (videoDuration) {
+                    // If video is shorter than 30 seconds, play full video
+                    videoTimer = setTimeout(() => {
+                        loadNextVideo();
+                    }, videoDuration * 1000);
+                } else {
+                    // Fallback: 28 seconds if duration can't be determined
+                    videoTimer = setTimeout(() => {
+                        loadNextVideo();
+                    }, 28000);
+                }
+            }).catch(e => {
+                console.log('Play failed:', e);
+                isTransitioning = false;
+            });
+        }, { once: true });
+        
+        videoElement.addEventListener('error', () => {
+            console.log(`Error loading video: ${videoList[currentVideoIndex]}`);
+            // Skip to next video if current one fails
+            setTimeout(() => {
+                isTransitioning = false;
+                loadNextVideo();
+            }, 1000);
+        }, { once: true });
+    }, 500);
 }
 
-class Blob {
-    constructor(x, y, color, movementMultiplier) {
-        this.baseX = x;
-        this.baseY = y;
-        this.x = x;
-        this.y = y;
-        this.radius = isMobile ? width * 0.2 : width * 0.25; // Smaller radius on mobile
-        this.color = color;
-        this.movementMultiplier = movementMultiplier;
-    }
-
-    update() {
-        const moveAmount = isMobile ? 250 : 450; // Reduced movement on mobile
-        const deltaX = (mouseX - width/2) / (width/2);
-        const deltaY = (mouseY - height/2) / (height/2);
-        
-        const moveX = deltaX * Math.pow(Math.abs(deltaX), 0.8) * moveAmount * this.movementMultiplier;
-        const moveY = deltaY * Math.pow(Math.abs(deltaY), 0.8) * moveAmount * this.movementMultiplier;
-        
-        this.x = this.baseX + moveX;
-        this.y = this.baseY + moveY;
-    }
-
-    draw() {
-        ctx.filter = isMobile ? 'blur(50px)' : 'blur(100px)'; // Reduced blur on mobile
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-        ctx.filter = 'none';
-    }
+// Function to preload next video for smoother transitions
+function preloadNextVideo() {
+    const nextIndex = (currentVideoIndex + 1) % videoList.length;
+    const nextVideo = document.createElement('video');
+    nextVideo.src = videoList[nextIndex];
+    nextVideo.preload = 'metadata';
 }
 
-let leftBlob, rightBlob;
+// Initialize video background
+function initVideoBackground() {
+    // Set initial video
+    videoElement.src = videoList[currentVideoIndex];
+    videoElement.muted = true; // Ensure muted
+    videoElement.volume = 0; // Set volume to 0
+    videoElement.load();
+    
+    // Start playing when video is ready
+    videoElement.addEventListener('loadeddata', () => {
+        videoElement.play().then(() => {
+            // Set timer for first video based on its length
+            const videoDuration = videoElement.duration;
+            if (videoDuration && videoDuration > 28) {
+                videoTimer = setTimeout(() => {
+                    loadNextVideo();
+                }, 28000);
+            } else if (videoDuration) {
+                videoTimer = setTimeout(() => {
+                    loadNextVideo();
+                }, videoDuration * 1000);
+            } else {
+                videoTimer = setTimeout(() => {
+                    loadNextVideo();
+                }, 28000);
+            }
+        }).catch(e => {
+            console.log('Autoplay prevented:', e);
+            // If autoplay fails, try again after user interaction
+            document.addEventListener('click', () => {
+                videoElement.play().then(() => {
+                    const videoDuration = videoElement.duration;
+                    if (videoDuration && videoDuration > 28) {
+                        videoTimer = setTimeout(() => {
+                            loadNextVideo();
+                        }, 28000);
+                    } else if (videoDuration) {
+                        videoTimer = setTimeout(() => {
+                            loadNextVideo();
+                        }, videoDuration * 1000);
+                    } else {
+                        videoTimer = setTimeout(() => {
+                            loadNextVideo();
+                        }, 28000);
+                    }
+                });
+            }, { once: true });
+        });
+    }, { once: true });
+    
+    // Handle video end - cycle to next video
+    videoElement.addEventListener('ended', () => {
+        loadNextVideo();
+    });
+    
+    // Preload next video
+    preloadNextVideo();
+    
+    // Handle video errors
+    videoElement.addEventListener('error', () => {
+        console.log(`Error with video: ${videoList[currentVideoIndex]}`);
+        loadNextVideo();
+    });
+}
 
-function initBlobs() {
-    if (isMobile) {
-        // Adjust blob positions for mobile
-        leftBlob = new Blob(
-            width * 0.4,
-            height * 0.4,
-            'rgba(0, 0, 50, 0.7)',
-            1.2
-        );
-        
-        rightBlob = new Blob(
-            width * 0.6,
-            height * 0.6,
-            'rgba(40, 0, 50, 0.7)',
-            1.4
-        );
+// Pause video when page is not visible (saves battery)
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        videoElement.pause();
+        if (videoTimer) {
+            clearTimeout(videoTimer);
+        }
     } else {
-        leftBlob = new Blob(
-            width * 0.35,
-            height * 0.5,
-            'rgba(0, 0, 50, 0.7)',
-            1.2
-        );
-        
-        rightBlob = new Blob(
-            width * 0.65,
-            height * 0.5,
-            'rgba(40, 0, 50, 0.7)',
-            1.4
-        );
+        videoElement.play().catch(e => console.log('Resume play failed:', e));
+        // Restart timer when page becomes visible again
+        const videoDuration = videoElement.duration;
+        if (videoDuration && videoDuration > 28) {
+            videoTimer = setTimeout(() => {
+                loadNextVideo();
+            }, 28000);
+        } else if (videoDuration) {
+            videoTimer = setTimeout(() => {
+                loadNextVideo();
+            }, videoDuration * 1000);
+        } else {
+            videoTimer = setTimeout(() => {
+                loadNextVideo();
+            }, 28000);
+        }
     }
-}
+});
 
-function resizeCanvas() {
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
-    isMobile = window.innerWidth <= 768;
-    setupNoise();
-    initBlobs();
-}
+// Handle window resize
+window.addEventListener('resize', () => {
+    // Video will automatically adjust due to CSS
+});
 
-// Handle both mouse and touch events
-function updateMousePosition(e) {
-    if (e.type.startsWith('touch')) {
-        const touch = e.touches[0];
-        targetMouseX = touch.clientX;
-        targetMouseY = touch.clientY;
-    } else {
-        targetMouseX = e.clientX;
-        targetMouseY = e.clientY;
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', initVideoBackground);
+
+// Fallback: if video fails to load, show a static background
+setTimeout(() => {
+    if (videoElement.readyState === 0) {
+        console.log('Video failed to load, applying fallback background');
+        videoBackground.style.background = 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)';
     }
-}
-
-document.addEventListener('mousemove', updateMousePosition);
-document.addEventListener('touchmove', updateMousePosition, { passive: true });
-document.addEventListener('touchstart', updateMousePosition, { passive: true });
-
-// If no interaction, create subtle automatic movement
-let autoMoveTimer = 0;
-function updateAutoMove() {
-    if (targetMouseX === mouseX && targetMouseY === mouseY) {
-        autoMoveTimer += 0.02;
-        targetMouseX = width/2 + Math.sin(autoMoveTimer) * width * 0.1;
-        targetMouseY = height/2 + Math.cos(autoMoveTimer) * height * 0.1;
-    }
-}
-
-function updateMouse() {
-    mouseX += (targetMouseX - mouseX) * 0.15;
-    mouseY += (targetMouseY - mouseY) * 0.15;
-}
-
-function animate() {
-    updateMouse();
-    updateAutoMove();
-    
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, width, height);
-
-    leftBlob.update();
-    rightBlob.update();
-    leftBlob.draw();
-    rightBlob.draw();
-
-    // Apply the static noise overlay
-    ctx.globalCompositeOperation = 'screen';
-    ctx.drawImage(noiseCanvas, 0, 0, width, height);
-    ctx.globalCompositeOperation = 'source-over';
-
-    requestAnimationFrame(animate);
-}
-
-window.addEventListener('resize', resizeCanvas);
-
-// Set initial mouse position to center
-targetMouseX = window.innerWidth / 2;
-targetMouseY = window.innerHeight / 2;
-mouseX = targetMouseX;
-mouseY = targetMouseY;
-
-resizeCanvas();
-animate();
+}, 5000);

@@ -10,32 +10,68 @@
 <body>
   <div class="menu-bar">
     <div class="menu-left">
-      <span class="name">Alexander Barsanti</span>
+      <span class="portfolio-text">PORTFOLIO</span>
     </div>
     <div class="menu-right">
       <a href="about.html" class="menu-button">About</a>
-      <a href="resume.pdf" class="menu-button" target="_blank">Resume</a>
+      <a href="https://www.linkedin.com/in/alexbarsanti" class="menu-button" target="_blank">LinkedIn</a>
       <a href="contact.html" class="menu-button">Contact</a>
     </div>
   </div>
-  <canvas id="backgroundCanvas"></canvas>
-  <div class="columns">
-    <a href="photo.html" class="column-link">
-      <div class="column" id="photo">
-        <p>Photo</p>
-      </div>
-    </a>
-    <a href="video.html" class="column-link">
-      <div class="column" id="video">
-        <p>Video</p>
-      </div>
-    </a>
-    <a href="graphic-design.html" class="column-link">
-      <div class="column" id="graphic-design">
-        <p>Graphic Design</p>
-      </div>
-    </a>
+  
+  <!-- Video Background Container -->
+  <div id="videoBackground">
+    <video id="backgroundVideo" autoplay muted loop>
+      <!-- Videos will be dynamically loaded -->
+    </video>
+    <div class="video-overlay"></div>
   </div>
+  
+  <main class="hero">
+    <h1 class="hero-name">Alexander Barsanti</h1>
+    <div class="white-bar-above-buttons"></div>
+    <div class="hero-buttons">
+      <a href="image.html" class="hero-button">IMAGE</a>
+      <a href="postproduction.html" class="hero-button">POST-PRODUCTION</a>
+      <a href="Alexander_Barsanti_Resume.pdf" target="_blank" class="hero-button">Resume</a>
+    </div>
+  </main>
+  
+  <footer class="footer-bar">
+    <div class="footer-content">
+      <div class="footer-left">
+        <p class="email-label">Email</p>
+        <div class="white-bar"></div>
+        <p class="email-address">alexbarsanti5@gmail.com</p>
+      </div>
+      <div class="footer-right">
+        <p class="skills-label">Skills</p>
+        <div class="white-bar"></div>
+        <div class="skills-content">
+          <div class="skill-category">
+            <strong>Color:</strong> DaVinci Resolve
+          </div>
+          <div class="skill-category">
+            <strong>3D:</strong> Blender, Autodesk Maya
+          </div>
+          <div class="skill-category">
+            <strong>Video:</strong> Avid Media Composer, Adobe After Effects, Adobe Premiere Pro
+          </div>
+          <div class="skill-category">
+            <strong>Graphics:</strong> Adobe Photoshop, Adobe Illustrator, Figma
+          </div>
+          <div class="skill-category">
+            <strong>Interactive:</strong> HTML/CSS, JS
+          </div>
+          <div class="skill-category">
+            <strong>Others:</strong> Projector Operation, DCP Handling, AirTable, Microsoft Office, Google Suite, Image Restoration/Colorization, Social Media Marketing
+          </div>
+        </div>
+        <p class="copyright">&copy; 2025 Alexander Barsanti. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
   <script src="script.js"></script>
 </body>
 </html>
