@@ -242,7 +242,9 @@ body, html {
     font-style: normal !important;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.7) !important;
     order: 2;
-    text-align: center;
+    text-align: center !important;
+    width: 100% !important;
+    display: block !important;
   }
 
   /* Mobile-specific footer changes */
@@ -306,6 +308,12 @@ body, html {
   /* Mobile video zoom */
   #backgroundVideo {
     transform: translate(-50%, 0) scale(2.5) !important;
+  }
+
+  /* Disable scrolling on mobile */
+  body, html {
+    overflow: hidden !important;
+    height: 100vh !important;
   }
 }
 
