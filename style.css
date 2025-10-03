@@ -246,6 +246,11 @@ body, html {
     display: none;
   }
 
+  .hero-buttons {
+    margin-left: 20px;
+    gap: 15px;
+  }
+
   .hero-button {
     font-size: 18px;
     padding: 6px 12px;
@@ -300,6 +305,11 @@ body, html {
     font-size: 28px;
     letter-spacing: 1.5px;
     transform: scaleX(1.1);
+  }
+
+  .hero-buttons {
+    margin-left: 15px;
+    gap: 12px;
   }
 
   .hero-button {
@@ -406,9 +416,11 @@ body, html {
 
 .hero-buttons {
   display: flex;
+  flex-direction: column;
   gap: 20px;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 50px;
 }
 
 .white-bar-above-buttons {
