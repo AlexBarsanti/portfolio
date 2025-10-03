@@ -8,6 +8,11 @@ const closeModal = document.querySelector('.close-modal');
 // Video data with titles and descriptions
 const videoData = [
     {
+        src: 'videos/video6.MP4',
+        title: "CalArts Midterm",
+        description: "The first 3 weeks at CalArts were dedicated to building our skills in analog animation. This was my first experience with traditional, hand-drawn, frames."
+    },
+    {
         src: 'videos/video1.mp4',
         title: "COLOR GRADING REEL",
         description: "This reel is a compilation of my work as a color grader on DaVinci Resolve, from student films to music videos."
@@ -31,11 +36,6 @@ const videoData = [
         src: 'videos/video5.mp4',
         title: "CalArts Project",
         description: "CalArts Experimental Animation"
-    },
-    {
-        src: 'videos/video6.MP4',
-        title: "CalArts Midterm",
-        description: "The first 3 weeks at CalArts were dedicated to building our skills in analog animation. This was my first experience with traditional, hand-drawn, frames."
     },
     {
         src: 'videos/video7.mp4',
