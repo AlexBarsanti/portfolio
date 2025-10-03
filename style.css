@@ -262,6 +262,30 @@ body, html {
     gap: 30px !important;
     padding: 0 20px 0 10px !important;
   }
+
+  /* Mobile button layout - stack on left */
+  .hero-buttons {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    padding-left: 20px !important;
+    gap: 15px !important;
+  }
+
+  .hero-button {
+    font-size: 36px !important;
+    padding: 12px 20px !important;
+  }
+
+  /* Hide skills section on mobile */
+  .footer-right {
+    display: none !important;
+  }
+
+  .footer-content {
+    justify-content: flex-start !important;
+    padding: 0 20px 0 20px !important;
+  }
 }
 
 @media (max-width: 480px) {
