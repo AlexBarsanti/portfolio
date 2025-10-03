@@ -311,8 +311,8 @@ body, html {
 
   /* Mobile video zoom, position, and blur */
   #backgroundVideo {
-    transform: translate(-50%, -20%) scale(3.5) !important;
-    filter: blur(8px) !important;
+    transform: translate(-50%, -10%) scale(3.5) !important;
+    filter: blur(15px) !important;
   }
 
   /* Disable scrolling on mobile - make it static */
