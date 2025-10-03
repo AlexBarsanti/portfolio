@@ -295,8 +295,12 @@ body, html {
     margin-left: 0 !important;
   }
 
-  /* Hide skills section on mobile */
+  /* Hide skills and email sections on mobile */
   .footer-right {
+    display: none !important;
+  }
+
+  .footer-left {
     display: none !important;
   }
 
@@ -305,9 +309,10 @@ body, html {
     padding: 0 20px 0 20px !important;
   }
 
-  /* Mobile video zoom */
+  /* Mobile video zoom, position, and blur */
   #backgroundVideo {
-    transform: translate(-50%, 0) scale(2.5) !important;
+    transform: translate(-50%, -20%) scale(3.5) !important;
+    filter: blur(8px) !important;
   }
 
   /* Disable scrolling on mobile - make it static */
