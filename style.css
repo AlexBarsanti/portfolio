@@ -316,6 +316,7 @@ body, html {
     height: 100vh !important;
     position: fixed !important;
     width: 100% !important;
+    touch-action: none !important;
   }
 
   /* Ensure all content fits in viewport */
@@ -328,6 +329,17 @@ body, html {
     position: fixed !important;
     bottom: 0 !important;
     width: 100% !important;
+  }
+
+  /* Prevent any scrolling on home page mobile */
+  main.hero {
+    height: 100vh !important;
+    overflow: hidden !important;
+  }
+
+  #videoBackground {
+    height: 100vh !important;
+    overflow: hidden !important;
   }
 }
 
