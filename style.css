@@ -228,7 +228,7 @@ body, html {
     font-weight: 400;
     font-style: normal;
     color: white;
-    font-size: 60px;
+    font-size: 36px;
     margin-bottom: 5px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
   }
@@ -237,26 +237,36 @@ body, html {
     font-size: 36px;
   }
 
+  /* Mobile-specific styles for hero buttons */
+  .white-bar-above-buttons {
+    display: none;
+  }
+
+  .hero-button {
+    font-size: 24px;
+    padding: 8px 16px;
+  }
+
   /* Mobile-specific styles for footer */
   .email-label {
-    font-size: 14px;
-  }
-
-  .email-address {
-    font-size: 12px;
-  }
-
-  .skills-label {
-    font-size: 14px;
-  }
-
-  .skill-category {
     font-size: 10px;
   }
 
+  .email-address {
+    font-size: 8px;
+  }
+
+  .skills-label {
+    font-size: 10px;
+  }
+
+  .skill-category {
+    font-size: 7px;
+  }
+
   .footer-content {
-    gap: 40px;
-    padding: 0 20px 0 10px;
+    gap: 30px;
+    padding: 0 15px 0 8px;
   }
 }
 
@@ -277,32 +287,37 @@ body, html {
 
   /* Even smaller styles for very small screens */
   .hero-name-mobile {
-    font-size: 45px;
+    font-size: 28px;
   }
 
   .portfolio-text {
     font-size: 28px;
   }
 
+  .hero-button {
+    font-size: 20px;
+    padding: 6px 12px;
+  }
+
   .email-label {
-    font-size: 12px;
-  }
-
-  .email-address {
-    font-size: 10px;
-  }
-
-  .skills-label {
-    font-size: 12px;
-  }
-
-  .skill-category {
     font-size: 8px;
   }
 
+  .email-address {
+    font-size: 6px;
+  }
+
+  .skills-label {
+    font-size: 8px;
+  }
+
+  .skill-category {
+    font-size: 5px;
+  }
+
   .footer-content {
-    gap: 30px;
-    padding: 0 15px 0 8px;
+    gap: 20px;
+    padding: 0 10px 0 5px;
   }
 }
 
