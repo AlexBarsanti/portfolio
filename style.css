@@ -264,11 +264,16 @@ body, html {
   }
 
   /* Mobile button layout - stack on left */
+  .white-bar-above-buttons {
+    display: none !important;
+  }
+
   .hero-buttons {
     flex-direction: column !important;
     align-items: flex-start !important;
     justify-content: flex-start !important;
-    padding-left: 20px !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
     gap: 15px !important;
     width: 100% !important;
   }
@@ -276,6 +281,7 @@ body, html {
   .hero-button {
     font-size: 36px !important;
     padding: 12px 20px !important;
+    margin-left: 0 !important;
   }
 
   /* Hide skills section on mobile */
