@@ -331,9 +331,7 @@ body, html {
   }
 
   .footer-bar {
-    position: fixed !important;
-    bottom: 0 !important;
-    width: 100% !important;
+    display: none !important;
   }
 
   /* Prevent any scrolling on home page mobile */
