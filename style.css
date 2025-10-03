@@ -248,7 +248,8 @@ body, html {
   }
 
   .hero-buttons {
-    left: 15px;
+    left: 0px;
+    padding-left: 5px;
     gap: 15px;
   }
 
@@ -292,7 +293,8 @@ body, html {
   }
 
   .hero-buttons {
-    left: 10px;
+    left: 0px;
+    padding-left: 3px;
     gap: 12px;
   }
 
@@ -379,7 +381,7 @@ body, html {
 
 .hero-buttons {
   position: fixed;
-  left: 20px;
+  left: 0px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -388,6 +390,7 @@ body, html {
   justify-content: flex-start;
   align-items: flex-start;
   z-index: 1000;
+  padding-left: 10px;
 }
 
 .white-bar-above-buttons {
