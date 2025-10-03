@@ -312,7 +312,7 @@ body, html {
 
   /* Mobile video zoom, position, and blur - cover whole screen */
   #backgroundVideo {
-    transform: scale(1.5) !important;
+    transform: scale(1.2) !important;
     filter: blur(1px) brightness(0.7) !important;
     height: 100vh !important;
     width: 100vw !important;
