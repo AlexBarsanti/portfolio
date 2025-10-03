@@ -334,6 +334,15 @@ body, html {
     display: none !important;
   }
 
+  /* Remove any black bars or bottom elements */
+  footer {
+    display: none !important;
+  }
+
+  .footer-content {
+    display: none !important;
+  }
+
   /* Prevent any scrolling on home page mobile */
   main.hero {
     height: 100vh !important;
