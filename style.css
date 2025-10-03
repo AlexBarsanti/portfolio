@@ -309,10 +309,19 @@ body, html {
     padding: 0 20px 0 20px !important;
   }
 
-  /* Mobile video zoom, position, and blur */
+  /* Mobile video zoom, position, and blur - cover bottom 80% */
   #backgroundVideo {
-    transform: translate(-50%, 40%) scale(3.5) !important;
+    transform: translate(-50%, 0) scale(3.5) !important;
     filter: blur(1px) !important;
+    height: 80vh !important;
+    bottom: 0 !important;
+    top: auto !important;
+  }
+
+  #videoBackground {
+    height: 80vh !important;
+    bottom: 0 !important;
+    top: auto !important;
   }
 
   /* Disable scrolling on mobile - make it static */
@@ -326,10 +335,12 @@ body, html {
     padding: 0 !important;
   }
 
-  /* Ensure all content fits in viewport */
+  /* Ensure all content fits in viewport - top 20% */
   .hero {
-    height: 100vh !important;
+    height: 20vh !important;
     overflow: hidden !important;
+    position: relative !important;
+    z-index: 10 !important;
   }
 
   .footer-bar {
@@ -369,10 +380,12 @@ body, html {
     margin: 0 !important;
   }
 
-  /* Prevent any scrolling on home page mobile */
+  /* Prevent any scrolling on home page mobile - top 20% */
   main.hero {
-    height: 100vh !important;
+    height: 20vh !important;
     overflow: hidden !important;
+    position: relative !important;
+    z-index: 10 !important;
   }
 
   #videoBackground {
