@@ -64,6 +64,10 @@ body, html {
   margin-left: 20px;
 }
 
+.hero-name-mobile {
+  display: none;
+}
+
 .portfolio-text {
   font-family: "headline-gothic-atf-rough-n1", sans-serif;
   font-weight: 400;
@@ -165,6 +169,10 @@ body, html {
 
   .menu-left {
     margin-left: 0;
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .menu-right {
@@ -173,6 +181,7 @@ body, html {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+    order: 3;
   }
 
   .name {
@@ -207,6 +216,48 @@ body, html {
   .column-link {
     width: 100%;
   }
+
+  /* Mobile-specific styles for Alexander Barsanti name */
+  .hero-name {
+    display: none;
+  }
+
+  .hero-name-mobile {
+    display: block;
+    font-family: "headline-gothic-atf-rough-n1", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    font-size: 60px;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  }
+
+  .portfolio-text {
+    font-size: 36px;
+  }
+
+  /* Mobile-specific styles for footer */
+  .email-label {
+    font-size: 14px;
+  }
+
+  .email-address {
+    font-size: 12px;
+  }
+
+  .skills-label {
+    font-size: 14px;
+  }
+
+  .skill-category {
+    font-size: 10px;
+  }
+
+  .footer-content {
+    gap: 40px;
+    padding: 0 20px 0 10px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -222,6 +273,36 @@ body, html {
 
   .column p {
     font-size: 36px;
+  }
+
+  /* Even smaller styles for very small screens */
+  .hero-name-mobile {
+    font-size: 45px;
+  }
+
+  .portfolio-text {
+    font-size: 28px;
+  }
+
+  .email-label {
+    font-size: 12px;
+  }
+
+  .email-address {
+    font-size: 10px;
+  }
+
+  .skills-label {
+    font-size: 12px;
+  }
+
+  .skill-category {
+    font-size: 8px;
+  }
+
+  .footer-content {
+    gap: 30px;
+    padding: 0 15px 0 8px;
   }
 }
 
