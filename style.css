@@ -270,6 +270,7 @@ body, html {
     justify-content: flex-start !important;
     padding-left: 20px !important;
     gap: 15px !important;
+    width: 100% !important;
   }
 
   .hero-button {
