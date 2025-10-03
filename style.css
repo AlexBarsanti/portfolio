@@ -312,7 +312,7 @@ body, html {
 
   /* Mobile video zoom, position, and blur - cover whole screen */
   #backgroundVideo {
-    transform: translate(-50%, 0) scale(1.2) !important;
+    transform: translate(-50%, 0) scale(1.0) !important;
     filter: blur(1px) brightness(0.7) !important;
     height: 100vh !important;
     width: 100vw !important;
@@ -321,6 +321,8 @@ body, html {
     right: 0 !important;
     bottom: 0 !important;
     object-fit: cover !important;
+    min-width: 100vw !important;
+    min-height: 100vh !important;
   }
 
   #videoBackground {
@@ -330,6 +332,9 @@ body, html {
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
+    overflow: hidden !important;
+    position: fixed !important;
+    z-index: -1 !important;
   }
 
   /* Mobile dark overlay - cover whole screen */
