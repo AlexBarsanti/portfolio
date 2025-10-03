@@ -34,7 +34,7 @@ const videoData = [
     },
     {
         src: 'videos/video6.MP4',
-        title: "CalArts Project",
+        title: "CalArts Midterm",
         description: "The first 3 weeks at CalArts were dedicated to building our skills in analog animation. This was my first experience with traditional, hand-drawn, frames."
     },
     {
