@@ -117,7 +117,30 @@ body::before {
     object-fit: contain;
     display: none;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out, filter 0.3s ease;
+}
+
+/* Progressive loading styles */
+.slides img[data-full-src] {
+    /* Initial blur for thumbnails */
+    filter: blur(3px);
+}
+
+.slides img[data-full-src].loaded {
+    /* Sharp when full resolution loads */
+    filter: blur(0px);
+}
+
+/* Loading placeholder */
+.slides img:not([src]) {
+    background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
 .slides img.active {
