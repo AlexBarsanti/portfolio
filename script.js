@@ -93,10 +93,11 @@ function preloadNextVideo() {
 
 // Initialize video background
 function initVideoBackground() {
-    // Set initial video
+    // Set initial video with minimal preloading
     videoElement.src = videoList[currentVideoIndex];
     videoElement.muted = true; // Ensure muted
     videoElement.volume = 0; // Set volume to 0
+    videoElement.preload = 'auto'; // Only preload first video
     videoElement.load();
     
     // Start playing when video is ready

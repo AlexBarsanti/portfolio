@@ -7,24 +7,83 @@ class Slideshow {
         this.nextButton = container.querySelector('.next');
         this.closeButton = container.querySelector('.close-button');
         this.slideCounter = container.querySelector('.slide-counter');
+        this.images = images;
+        this.loadedImages = new Set();
+        this.loadedFullRes = new Set();
         
-        // Add images
-        images.forEach(imagePath => {
+        // Add images with progressive loading (thumbnails first)
+        images.forEach((imagePath, index) => {
             const img = document.createElement('img');
-            img.src = imagePath;
+            
+            // Create thumbnail path
+            const thumbnailPath = this.getThumbnailPath(imagePath);
+            
+            // Always load thumbnail immediately
+            img.src = thumbnailPath;
+            img.dataset.fullSrc = imagePath; // Store full resolution path
             img.alt = `Photo ${imagePath}`;
+            img.loading = 'lazy';
+            
+            // Add blur effect for loading state
+            img.style.filter = 'blur(5px)';
+            img.style.transition = 'filter 0.3s ease';
+            
             this.slidesContainer.appendChild(img);
+            this.loadedImages.add(index);
         });
         
         this.slides = this.slidesContainer.querySelectorAll('img');
         this.setupEventListeners();
         this.showSlide(0);
+        
+        // Preload first few full-resolution images
+        this.preloadFullResImages();
+    }
+    
+    getThumbnailPath(imagePath) {
+        // Convert image path to thumbnail path
+        // e.g., "photos/photo1.jpg" → "thumbnails/photos/photo1.jpg"
+        return imagePath.replace(/^([^\/]+)/, 'thumbnails/$1');
+    }
+    
+    preloadFullResImages() {
+        // Preload first 3 full-resolution images
+        for (let i = 0; i < Math.min(3, this.images.length); i++) {
+            this.loadFullResImage(i);
+        }
+    }
+    
+    loadFullResImage(index) {
+        if (this.loadedFullRes.has(index)) return;
+        
+        const img = this.slides[index];
+        const fullSrc = img.dataset.fullSrc;
+        
+        if (!fullSrc) return;
+        
+        // Create a new image element to preload
+        const preloadImg = new Image();
+        preloadImg.onload = () => {
+            // Once loaded, replace the thumbnail with full resolution
+            img.src = fullSrc;
+            img.style.filter = 'blur(0px)';
+            this.loadedFullRes.add(index);
+        };
+        preloadImg.onerror = () => {
+            console.warn(`Failed to load full resolution: ${fullSrc}`);
+        };
+        preloadImg.src = fullSrc;
     }
   
     showSlide(index) {
         this.slides.forEach(slide => slide.classList.remove('active'));
         this.slides[index].classList.add('active');
         this.slideCounter.textContent = `${index + 1} / ${this.slides.length}`;
+        
+        // Load full resolution for current, next, and previous images
+        this.loadFullResImage(index);
+        this.loadFullResImage((index + 1) % this.slides.length); // Next
+        this.loadFullResImage((index - 1 + this.slides.length) % this.slides.length); // Previous
     }
   
     prevSlide() {

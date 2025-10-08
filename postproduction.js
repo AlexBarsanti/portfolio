@@ -71,15 +71,29 @@ function createVideoGrid() {
         videoSquare.className = 'video-square';
         videoSquare.dataset.videoIndex = index;
 
-        // Create video element for thumbnail
+        // Create video element for thumbnail with lazy loading
         const videoElement = document.createElement('video');
-        videoElement.src = video.src;
         videoElement.muted = true;
-        videoElement.preload = 'metadata';
-        videoElement.addEventListener('loadedmetadata', () => {
-            // Seek to a specific time for thumbnail (e.g., 2 seconds)
-            videoElement.currentTime = Math.min(2, videoElement.duration * 0.1);
-        });
+        videoElement.preload = 'none'; // Don't preload until needed
+        videoElement.dataset.src = video.src; // Store source for lazy loading
+        
+        // Lazy load video when it comes into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && videoElement.dataset.src) {
+                    videoElement.src = videoElement.dataset.src;
+                    videoElement.preload = 'metadata';
+                    delete videoElement.dataset.src;
+                    videoElement.addEventListener('loadedmetadata', () => {
+                        // Seek to a specific time for thumbnail (e.g., 2 seconds)
+                        videoElement.currentTime = Math.min(2, videoElement.duration * 0.1);
+                    }, { once: true });
+                    observer.unobserve(videoElement);
+                }
+            });
+        }, { rootMargin: '50px' });
+        
+        observer.observe(videoSquare);
 
         // Video title
         const videoTitle = document.createElement('div');
