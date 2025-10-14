@@ -744,7 +744,7 @@ main.hero {
   align-items: flex-start;
   gap: 80px;
   margin-bottom: 10px;
-  transform: translateY(-10%);
+  transform: translateY(-10%) translateY(-15px);
 }
 
 .footer-header {
