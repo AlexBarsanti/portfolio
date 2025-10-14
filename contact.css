@@ -11,18 +11,19 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(to right, #e0e0e0, #ffffff);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
-    padding: 20px 30px;
-    z-index: 10;
+    padding: 20px 0;
+    z-index: 1000;
     box-sizing: border-box;
 }
 
 .home-button {
     margin-left: 40px;
     font-size: 28px;
-    color: black;
+    color: white;
     text-decoration: none;
     font-weight: bold;
 }
@@ -35,14 +36,26 @@ body {
 }
 
 .nav-button {
-    font-size: 20px;
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
+  color: white;
+  text-decoration: none;
+  font-family: "headline-gothic-atf-rough-n1", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  padding: 8px 16px;
+  border: 2px solid white;
+  border-radius: 20px;
+  transition: all 0.3s;
 }
 
-.home-button:hover, .nav-button:hover {
-    color: #333;
+.nav-button:hover {
+  background-color: white;
+  color: black;
+  transform: translateY(-2px);
+}
+
+.home-button:hover {
+    color: #ccc;
 }
 
 .contact-container {
