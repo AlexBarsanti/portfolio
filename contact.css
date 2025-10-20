@@ -49,9 +49,8 @@ body {
 }
 
 .nav-button:hover {
-  background-color: white;
-  color: black;
-  transform: translateY(-2px);
+  background: white;
+  color: #2a5298;
 }
 
 .home-button:hover {

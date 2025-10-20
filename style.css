@@ -25,6 +25,7 @@ body, html {
   height: 120vh;
   z-index: -1;
   overflow: visible;
+  background-color: #000000;
 }
 
 #backgroundVideo {
@@ -36,6 +37,7 @@ body, html {
   transform: translate(-50%, 0);
   object-fit: contain;
   z-index: -1;
+  transition: opacity 0.25s ease-in-out, filter 0.5s ease-in-out;
 }
 
 .video-overlay {
@@ -533,7 +535,7 @@ body, html {
 }
 
 .white-bar-above-buttons {
-  width: 702px;
+  width: 842px;
   height: 3px;
   background-color: white;
   margin: 0 auto 10px auto;
@@ -744,19 +746,22 @@ main.hero {
   align-items: flex-start;
   gap: 80px;
   margin-bottom: 10px;
-  transform: translateY(-10%) translateY(-15px);
+  transform: translateY(-10%) translateY(-5px);
 }
 
 .footer-header {
   font-family: "Helvetica Neue", "Arial", sans-serif;
-  font-weight: 200;
+  font-weight: bold;
   font-style: normal;
   color: white;
-  font-size: 12px;
+  font-size: 10px !important;
   margin: 0;
   letter-spacing: 1px;
   opacity: 0.9;
   white-space: nowrap;
+  transform: scale(1);
+  zoom: 1;
+  text-align: center !important;
 }
 
 .footer-section {
@@ -779,13 +784,15 @@ main.hero {
   font-weight: 200;
   font-style: normal;
   color: white;
-  font-size: 13.8px;
+  font-size: 11.5px !important;
   margin: 0;
   letter-spacing: 0.5px;
   opacity: 0.7;
-  text-align: left;
+  text-align: center !important;
   line-height: 1.0;
   white-space: nowrap;
+  transform: scale(1);
+  zoom: 1;
 }
 
 /* Footer text styling */
@@ -794,8 +801,8 @@ main.hero {
   font-weight: 200;
   font-style: normal;
   color: white;
-  font-size: 14px;
-  text-align: center;
+  font-size: 11.5px !important;
+  text-align: center !important;
   margin: 0;
   padding: 0 60px 0 60px;
   opacity: 0.8;
@@ -805,6 +812,8 @@ main.hero {
   width: 100%;
   position: relative;
   white-space: nowrap;
+  transform: scale(1);
+  zoom: 1;
 }
 
 .footer-text::before {

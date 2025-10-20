@@ -4,6 +4,7 @@ const videoBackground = document.getElementById('videoBackground');
 
 // List of videos to cycle through
 const videoList = [
+    'videos/imax clip.MOV',
     'videos/video1.mp4',
     'videos/video2.mp4',
     'videos/video3.mp4',
@@ -34,19 +35,31 @@ function loadNextVideo() {
         videoTimer = null;
     }
     
-    // Create fade out effect
-    videoElement.style.opacity = '0';
+    // Pause video to freeze it in place
+    videoElement.pause();
     
+    // Wait a moment, then fade to black
     setTimeout(() => {
-        videoElement.src = videoList[currentVideoIndex];
-        videoElement.muted = true; // Ensure muted
-        videoElement.volume = 0; // Set volume to 0
-        videoElement.load();
+        videoElement.style.opacity = '0';
+        
+        // After fade completes, switch video
+        setTimeout(() => {
+            videoElement.src = videoList[currentVideoIndex];
+            videoElement.muted = true; // Ensure muted
+            videoElement.volume = 0; // Set volume to 0
+            videoElement.load();
         
         videoElement.addEventListener('loadeddata', () => {
             videoElement.play().then(() => {
                 videoElement.style.opacity = '1';
                 isTransitioning = false;
+                
+                // Apply special effect to IMAX clip
+                if (videoList[currentVideoIndex].includes('imax clip')) {
+                    videoElement.style.filter = 'blur(0.3px) brightness(1.03)';
+                } else {
+                    videoElement.style.filter = 'none';
+                }
                 
                 // Set timer for next video based on video length
                 const videoDuration = videoElement.duration;
@@ -80,7 +93,8 @@ function loadNextVideo() {
                 loadNextVideo();
             }, 1000);
         }, { once: true });
-    }, 500);
+        }, 250);
+    }, 200);
 }
 
 // Function to preload next video for smoother transitions
@@ -103,6 +117,13 @@ function initVideoBackground() {
     // Start playing when video is ready
     videoElement.addEventListener('loadeddata', () => {
         videoElement.play().then(() => {
+            // Apply special effect to IMAX clip
+            if (videoList[currentVideoIndex].includes('imax clip')) {
+                videoElement.style.filter = 'brightness(1.03)';
+            } else {
+                videoElement.style.filter = 'none';
+            }
+            
             // Set timer for first video based on its length
             const videoDuration = videoElement.duration;
             if (videoDuration && videoDuration > 28) {
@@ -123,6 +144,13 @@ function initVideoBackground() {
             // If autoplay fails, try again after user interaction
             document.addEventListener('click', () => {
                 videoElement.play().then(() => {
+                    // Apply special effect to IMAX clip
+                    if (videoList[currentVideoIndex].includes('imax clip')) {
+                        videoElement.style.filter = 'brightness(1.03)';
+                    } else {
+                        videoElement.style.filter = 'none';
+                    }
+                    
                     const videoDuration = videoElement.duration;
                     if (videoDuration && videoDuration > 28) {
                         videoTimer = setTimeout(() => {

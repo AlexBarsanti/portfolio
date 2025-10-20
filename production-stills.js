@@ -11,7 +11,7 @@ class ProductionStillsSlideshow {
         this.loadedImages = new Set();
         this.loadedFullRes = new Set();
         
-        // Add images with progressive loading (thumbnails first)
+        // Add all images to grid layout
         images.forEach((imagePath, index) => {
             const img = document.createElement('img');
             
@@ -38,6 +38,9 @@ class ProductionStillsSlideshow {
             img.addEventListener('click', () => {
                 this.openFullscreen(index);
             });
+            
+            // Show all images in grid
+            img.style.display = 'block';
             
             this.slidesContainer.appendChild(img);
         });
@@ -125,6 +128,12 @@ class ProductionStillsSlideshow {
     closeFullscreen() {
         this.container.classList.remove('fullscreen');
         document.body.style.overflow = 'auto';
+        
+        // Reset all image styles to their original state
+        Array.from(this.slidesContainer.children).forEach(img => {
+            img.style.display = '';
+            img.style.margin = '';
+        });
     }
     
     nextSlide() {
@@ -156,14 +165,23 @@ class ProductionStillsSlideshow {
     }
     
     updateSlideDisplay() {
-        // Hide all images
-        Array.from(this.slidesContainer.children).forEach(img => {
-            img.style.display = 'none';
-        });
-        
-        // Show current image
-        if (this.slidesContainer.children[this.slideIndex]) {
-            this.slidesContainer.children[this.slideIndex].style.display = 'block';
+        // In grid mode, all images are always visible
+        // Only hide/show images when in fullscreen mode
+        if (this.container.classList.contains('fullscreen')) {
+            // Hide all images
+            Array.from(this.slidesContainer.children).forEach(img => {
+                img.style.display = 'none';
+            });
+            
+            // Show current image
+            if (this.slidesContainer.children[this.slideIndex]) {
+                this.slidesContainer.children[this.slideIndex].style.display = 'block';
+            }
+        } else {
+            // In grid mode, ensure all images are visible
+            Array.from(this.slidesContainer.children).forEach(img => {
+                img.style.display = 'block';
+            });
         }
     }
     
@@ -176,29 +194,56 @@ class ProductionStillsSlideshow {
 
 // Initialize the slideshow when the page loads
 document.addEventListener('DOMContentLoaded', () => {
-    // Define your production stills images here
-    // You can add more images to this array
+    // Production stills images from behind-the-scenes photography
     const productionStillsImages = [
-        'photos/photo1.jpg',
-        'photos/photo2.jpg',
-        'photos/photo3.jpg',
-        'photos/photo4.jpg',
-        'photos/photo5.jpg',
-        'photos/photo6.jpg',
-        'photos/photo7.jpg',
-        'photos/photo8.jpg',
-        'photos/photo9.jpg',
-        'photos/photo10.jpg',
-        'photos/photo11.jpg',
-        'photos/photo12.jpg',
-        'photos/photo13.jpg',
-        'photos/photo14.jpg',
-        'photos/photo15.jpg',
-        'photos/photo16.jpg',
-        'photos/photo17.jpg',
-        'photos/photo18.jpg',
-        'photos/photo19.jpg',
-        'photos/photo20.jpg'
+        'production-stills-web/478D16D2-E0D2-47E7-AF97-0B85A2A3CEC2.jpg',
+        'production-stills-web/ALPACINO_SBP08952.jpg',
+        'production-stills-web/IMG_0012.jpg',
+        'production-stills-web/IMG_0173.jpg',
+        'production-stills-web/IMG_0174.jpg',
+        'production-stills-web/IMG_0345.jpg',
+        'production-stills-web/IMG_0346.jpg',
+        'production-stills-web/IMG_0972.jpg',
+        'production-stills-web/IMG_1022.jpg',
+        'production-stills-web/IMG_1024.jpg',
+        'production-stills-web/IMG_1189.jpg',
+        'production-stills-web/IMG_1418.jpg',
+        'production-stills-web/IMG_1557.jpg',
+        'production-stills-web/IMG_1574.jpg',
+        'production-stills-web/IMG_2632.jpg',
+        'production-stills-web/IMG_3718.jpg',
+        'production-stills-web/IMG_3840.jpg',
+        'production-stills-web/IMG_3851.jpg',
+        'production-stills-web/IMG_3868.jpg',
+        'production-stills-web/IMG_3927.jpg',
+        'production-stills-web/IMG_3964.jpg',
+        'production-stills-web/IMG_4006.jpg',
+        'production-stills-web/IMG_5796.jpg',
+        'production-stills-web/IMG_6862.jpg',
+        'production-stills-web/IMG_7012.jpg',
+        'production-stills-web/IMG_7235.jpg',
+        'production-stills-web/IMG_7782.jpg',
+        'production-stills-web/IMG_7870.jpg',
+        'production-stills-web/IMG_8073.jpg',
+        'production-stills-web/IMG_8436.jpg',
+        'production-stills-web/IMG_8615.jpg',
+        'production-stills-web/IMG_8621.jpg',
+        'production-stills-web/IMG_8622.jpg',
+        'production-stills-web/IMG_8730.jpg',
+        'production-stills-web/IMG_8765.jpg',
+        'production-stills-web/IMG_8779.jpg',
+        'production-stills-web/IMG_9087.jpg',
+        'production-stills-web/IMG_9123.jpg',
+        'production-stills-web/IMG_9129.jpg',
+        'production-stills-web/IMG_9488.jpg',
+        'production-stills-web/IMG_9572.jpg',
+        'production-stills-web/IMG_9606.jpg',
+        'production-stills-web/IMG_9612.jpg',
+        'production-stills-web/IMG_9613.jpg',
+        'production-stills-web/IMG_9615.jpg',
+        'production-stills-web/IMG_9674.jpg',
+        'production-stills-web/IMG_9734.jpg',
+        'production-stills-web/IMG_9852.jpg'
     ];
     
     const slideshowContainer = document.querySelector('.slideshow-container');
