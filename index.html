@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=1200, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes">
   <title>Alexander Barsanti</title>
   
   <!-- Performance Optimization: DNS Prefetch & Preconnect -->
@@ -18,94 +18,104 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="menu-bar">
-    <div class="menu-left">
-      <h1 class="hero-name">Alexander Barsanti</h1>
-      <span class="portfolio-text">PORTFOLIO</span>
-    </div>
-    <div class="menu-right">
-      <a href="about.html" class="menu-button">About</a>
-      <a href="Alexander_Barsanti_Resume.pdf" class="menu-button" target="_blank">Resume</a>
-      <a href="https://www.linkedin.com/in/alexbarsanti" class="menu-button" target="_blank">LinkedIn</a>
-      <a href="contact.html" class="menu-button">Contact</a>
-    </div>
+  <button class="hamburger-menu" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="menu-backdrop" id="menuBackdrop"></div>
+  <div class="menu-overlay" id="menuOverlay">
+    <nav class="menu-nav">
+      <a href="editing.html">Editing</a>
+      <a href="color-grading.html">Color Grading</a>
+      <a href="vfx.html">VFX</a>
+      <a href="imax-workshop.html">IMAX Workshop</a>
+      <a href="production-stills.html">Production Stills</a>
+      
+    </nav>
   </div>
-  
-  <!-- Video Background Container -->
-  <div id="videoBackground">
-    <video id="backgroundVideo" autoplay muted loop>
-      <!-- Videos will be dynamically loaded -->
-    </video>
-    <div class="video-overlay"></div>
+
+  <div class="header-stack">
+    <header class="site-header">
+      <div class="branding">
+        <div class="name-lockup">
+          <span class="name-first">Alexander</span>
+          <span class="name-last">Barsanti</span>
+        </div>
+        <span class="portfolio-label">Portfolio</span>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/alexbarsanti" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <img src="linkedinlogo.png" alt="">
+        </a>
+        <a href="mailto:AlexBarsanti5@gmail.com" aria-label="Email Alex">
+          <img src="emaillogo.png" alt="">
+        </a>
+      </div>
+    </header>
+
+    <div class="nav-divider" aria-hidden="true"></div>
+
+    <nav class="primary-nav">
+      <a href="about.html">About</a>
+      <a href="Alexander_Barsanti_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </div>
-  
-  <main class="hero">
-    <h1 class="hero-name desktop-name">Alexander Barsanti</h1>
-    <div class="white-bar-above-buttons"></div>
-    <div class="hero-buttons">
-      <a href="image.html" class="hero-button">IMAGE</a>
-      <a href="postproduction.html" class="hero-button">POST PRODUCTION REELS/VIDEO WORK</a>
-      <a href="production-stills.html" class="hero-button">Production Stills</a>
+
+  <main>
+    <section class="feature-video" id="featureVideo">
+      <div class="video-wrapper">
+        <video src="finalreel.mp4" autoplay loop muted playsinline></video>
+        <div class="play-overlay">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" fill="rgba(255, 255, 255, 0.95)" stroke="rgba(0, 0, 0, 0.1)" stroke-width="1"/>
+            <path d="M10 8L16 12L10 16V8Z" fill="#111"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Fullscreen Video Modal -->
+    <div class="fullscreen-modal" id="fullscreenModal">
+      <button class="close-fullscreen" aria-label="Close fullscreen" id="closeFullscreen">×</button>
+      <video id="fullscreenVideo" controls autoplay></video>
     </div>
+
+    <section class="thumb-grid" aria-label="Work thumbnails">
+      <a class="thumb-block" href="editing.html">
+        <p class="thumb-label">Editing</p>
+        <div class="thumb">
+          <video src="videos/editing/snowsponsors.mp4" autoplay loop muted playsinline></video>
+        </div>
+      </a>
+      <a class="thumb-block" href="color-grading.html">
+        <p class="thumb-label">Color<br>Grading</p>
+        <div class="thumb">
+          <video src="colorreel.mp4" autoplay loop muted playsinline></video>
+        </div>
+      </a>
+      <a class="thumb-block" href="vfx.html">
+        <p class="thumb-label">VFX</p>
+        <div class="thumb">
+          <video src="videos/video2.mp4" autoplay loop muted playsinline></video>
+        </div>
+      </a>
+      <a class="thumb-block" href="imax-workshop.html">
+        <p class="thumb-label">IMAX<br>Workshop</p>
+        <div class="thumb">
+          <video src="imaxthumbnail.mp4" autoplay loop muted playsinline></video>
+        </div>
+      </a>
+      <a class="thumb-block" href="production-stills.html">
+        <p class="thumb-label">Production Stills</p>
+        <div class="thumb">
+          <img src="production-stills-web/ALPACINO_SBP08952.jpg" alt="Production stills" class="production-stills-thumb">
+        </div>
+      </a>
+    </section>
   </main>
-  
-  <footer class="footer-bar">
-    <div class="footer-headers">
-      <div class="footer-section">
-        <span class="footer-header">Camera Systems</span>
-        <div class="skills-list">
-          <div class="skill-item">IMAX MSM 9802</div>
-          <div class="skill-item">65mm Film Camera Operation</div>
-          <div class="skill-item">65mm Film Magazine Loading</div>
-        </div>
-      </div>
-      <div class="footer-section">
-        <span class="footer-header">Post Production Software</span>
-        <div class="skills-list">
-          <div class="skill-item">DaVinci Resolve</div>
-          <div class="skill-item">Avid Media Composer</div>
-          <div class="skill-item">Adobe After Effects</div>
-          <div class="skill-item">Adobe Premiere Pro</div>
-        </div>
-      </div>
-      <div class="footer-section">
-        <span class="footer-header">VFX Software</span>
-        <div class="skills-list">
-          <div class="skill-item">Autodesk Maya</div>
-          <div class="skill-item">Blender</div>
-        </div>
-      </div>
-      <div class="footer-section">
-        <span class="footer-header">Other Skills</span>
-        <div class="skills-list">
-          <div class="skill-item">Projector Operation, DCP Handling</div>
-          <div class="skill-item">AirTable</div>
-          <div class="skill-item">Microsoft Office, Google Suite</div>
-        </div>
-      </div>
-      <div class="footer-section">
-        <span class="footer-header">Based In</span>
-        <div class="skills-list">
-          <div class="skill-item">Los Angeles, CA (primary)</div>
-          <div class="skill-item">New York, NY (secondary)</div>
-        </div>
-      </div>
-      <div class="footer-section">
-        <span class="footer-header">Professional Experience</span>
-        <div class="skills-list">
-          <div class="skill-item">IMAX Cinematography Workshop</div>
-          <div class="skill-item">Black Valley Films</div>
-          <div class="skill-item">USC Projection Department</div>
-          <div class="skill-item">Jay Blakesberg Photography</div>
-          <div class="skill-item">Stephanie Berger Photography</div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-content">
-      <p class="footer-text">&copy; 2025 Alexander Barsanti | Post-Production & VFX | Work featured in projects by USC School of Cinematic Arts | Designed & coded by Alexander Barsanti</p>
-    </div>
-  </footer>
-  
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

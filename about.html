@@ -1,45 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>About - Alexander Barsanti</title>
-    
-    <!-- Performance Optimization: DNS Prefetch & Preconnect -->
-    <link rel="dns-prefetch" href="https://use.typekit.net">
-    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
-    <link rel="dns-prefetch" href="https://www.linkedin.com">
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="about.css" as="style">
-    <link rel="preload" href="aboutphoto.png" as="image">
-    
-    <link rel="stylesheet" href="https://use.typekit.net/yyf0myj.css">
-    <link rel="stylesheet" href="about.css">
-</head>
-<body>
-    <div class="top-bar">
-        <a href="index.html" class="home-button">Home</a>
-        <div class="nav-links">
-            <a href="image.html" class="nav-button">IMAGE</a>
-            <a href="postproduction.html" class="nav-button">POST PRODUCTION REELS/VIDEO WORK</a>
-            <a href="production-stills.html" class="nav-button">Production Stills</a>
-            <a href="https://www.linkedin.com/in/alexbarsanti" class="nav-button" target="_blank">LinkedIn</a>
-            <a href="Alexander_Barsanti_Resume.pdf" class="nav-button" target="_blank">Resume</a>
-            <a href="contact.html" class="nav-button">Contact</a>
-        </div>
-    </div>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes">
+  <title>About · Alexander Barsanti</title>
 
-    <div class="content">
-        <div class="about-container">
-            <div class="profile-image">
-                <img src="aboutphoto.png" alt="Alexander Barsanti">
-            </div>
-            <div class="about-text">
-                <h1>Alexander Barsanti</h1>
-                <p>I'm a motivated post-production professional specializing in editing, color, and visual effects. Originally from the suburbs of New York City, I studied under top 3D modelers and animators at CalArts and am now building hands-on experience on sets at USC. I've learned to adapt quickly and collaborate across disciplines to finish projects at a high standard. I'm excited to collaborate with industry teams to bring projects to their best possible finish.</p>
-            </div>
+  <link rel="dns-prefetch" href="https://use.typekit.net">
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+
+  <link rel="preload" href="style.css" as="style">
+  <link rel="stylesheet" href="https://use.typekit.net/yyf0myj.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="about.css">
+</head>
+<body class="vfx-theme">
+  <button class="hamburger-menu" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="menu-backdrop" id="menuBackdrop"></div>
+  <div class="menu-overlay" id="menuOverlay">
+    <nav class="menu-nav">
+      <a href="editing.html">Editing</a>
+      <a href="color-grading.html">Color Grading</a>
+      <a href="vfx.html">VFX</a>
+      <a href="imax-workshop.html">IMAX Workshop</a>
+      <a href="production-stills.html">Production Stills</a>
+    </nav>
+  </div>
+
+  <div class="header-stack">
+    <header class="site-header">
+      <div class="branding">
+        <div class="name-lockup">
+          <span class="name-first">Alexander</span>
+          <span class="name-last">Barsanti</span>
         </div>
-    </div>
+        <span class="portfolio-label">Portfolio</span>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/alexbarsanti" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <img src="linkedinlogo.png" alt="LinkedIn icon">
+        </a>
+        <a href="mailto:AlexBarsanti5@gmail.com" aria-label="Email Alex">
+          <img src="emaillogo.png" alt="Email icon">
+        </a>
+      </div>
+    </header>
+
+    <div class="nav-divider" aria-hidden="true"></div>
+
+    <nav class="primary-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="Alexander_Barsanti_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <main class="about-page">
+    <section class="about-content">
+      <div class="about-grid">
+        <div class="about-image-section">
+          <div class="about-image-container">
+            <div class="image-slideshow">
+              <img src="imaxphoto.png" alt="IMAX Workshop" class="slideshow-image active">
+              <img src="videos/vfx/LinkedIn.jpeg" alt="LinkedIn Photo" class="slideshow-image">
+            </div>
+          </div>
+          <div class="school-logos">
+            <img src="usclogo.png" alt="USC Logo" class="school-logo">
+            <img src="calartslogo.png" alt="CalArts Logo" class="school-logo">
+          </div>
+        </div>
+        <div class="about-text">
+          <p>I am a Los Angeles and New York based editor, VFX artist, and colorist with a background that bridges both animation and live-action filmmaking. I began my education in Experimental Animation at CalArts, where I studied under Disney animators and developed a strong foundation in 3D, 2D, compositing, and visual storytelling. I later transferred to USC's School of Cinematic Arts to expand my practice across production and post-production while focusing on a more holistic understanding of filmmaking.</p>
+          
+          <p>At USC, I have collaborated on many student films as a colorist, VFX artist, editor, and production assistant. These projects gave me practical experience with on-set workflows, camera systems, and lighting setups, which directly informs the creative decisions I make in post. My work spans editing, color grading in DaVinci Resolve, and 3D and VFX work in Blender and After Effects, applied across short films, music videos, and documentary material.</p>
+          
+          <p>In addition to my coursework, I serve as a post-production intern at Black Valley Films, assisting Academy Award nominated director Scott Hamilton Kennedy on documentary projects. My work includes research, archival sourcing, and observing editorial and finishing processes for active productions. I also work as a cinema projectionist for USC's School of Cinematic Arts, operating 4K digital cinema projectors, Dolby Atmos systems, and handling DCPs for screenings and industry events. This role has strengthened my understanding of exhibition standards and the final delivery pipeline.</p>
+          
+          <p>I am also trained to load and operate the IMAX MSM 9802 65mm film camera, which introduced me to the precision and discipline required in large-format production. Across all my work, I focus on shaping images with intention, whether through editorial structure, compositing digital elements into practical photography, or building a final grade that completes the visual arc of a project.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js" defer></script>
+  <script>
+    // Image slideshow that transitions every 7 seconds
+    document.addEventListener('DOMContentLoaded', () => {
+      const images = document.querySelectorAll('.slideshow-image');
+      let currentIndex = 0;
+      
+      function showNextImage() {
+        // Hide current image
+        images[currentIndex].classList.remove('active');
+        
+        // Move to next image
+        currentIndex = (currentIndex + 1) % images.length;
+        
+        // Show next image
+        images[currentIndex].classList.add('active');
+      }
+      
+      // Transition every 7 seconds
+      setInterval(showNextImage, 7000);
+    });
+  </script>
 </body>
 </html>
+

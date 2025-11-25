@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes">
+  <title>Editing · Alexander Barsanti</title>
+
+  <link rel="dns-prefetch" href="https://use.typekit.net">
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+
+  <link rel="preload" href="style.css" as="style">
+  <link rel="stylesheet" href="https://use.typekit.net/yyf0myj.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="editing.css">
+</head>
+<body class="editing-theme">
+  <button class="hamburger-menu" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="menu-backdrop" id="menuBackdrop"></div>
+  <div class="menu-overlay" id="menuOverlay">
+    <nav class="menu-nav">
+      <a href="editing.html">Editing</a>
+      <a href="color-grading.html">Color Grading</a>
+      <a href="vfx.html">VFX</a>
+      <a href="imax-workshop.html">IMAX Workshop</a>
+      <a href="production-stills.html">Production Stills</a>
+    </nav>
+  </div>
+
+  <div class="header-stack">
+    <header class="site-header">
+      <div class="branding">
+        <div class="name-lockup">
+          <span class="name-first">Alexander</span>
+          <span class="name-last">Barsanti</span>
+        </div>
+        <span class="portfolio-label">Portfolio</span>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/alexbarsanti" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <img src="linkedinlogo.png" alt="LinkedIn icon">
+        </a>
+        <a href="mailto:AlexBarsanti5@gmail.com" aria-label="Email Alex">
+          <img src="emaillogo.png" alt="Email icon">
+        </a>
+      </div>
+    </header>
+
+    <div class="nav-divider" aria-hidden="true"></div>
+
+    <nav class="primary-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="Alexander_Barsanti_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <main class="editing-page">
+    <section class="page-header">
+      <p class="eyebrow">Editorial · Story Development</p>
+      <h1>Cutting and shaping footage</h1>
+    </section>
+
+    <section class="case-studies" aria-label="Recent editing projects">
+      <header>
+        <p class="eyebrow">selected edits</p>
+      </header>
+      <div class="case-grid">
+        <article class="case-card">
+          <div class="case-media">
+            <video src="videos/editing/IMAX Edit HD.mp4" autoplay loop muted playsinline class="fullscreen-video"></video>
+          </div>
+          <div class="case-body">
+            <h3>Lone Pine IMAX Film</h3>
+            <p>Edited footage I helped shoot on the IMAX MSM 9802 film camera in Lone Pine CA, shaping the material through rhythm and pacing. <a href="imax-workshop.html">More on this workshop here</a>.</p>
+            <ul>
+              <li>Cut from 65mm scans delivered by IMAX's LA facility</li>
+              <li>Built the offline sequence in Avid with organized bins + synced media</li>
+            </ul>
+          </div>
+        </article>
+        <article class="case-card">
+          <div class="case-media">
+            <video src="videos/editing/snowsponsors.mp4" autoplay loop muted playsinline class="fullscreen-video"></video>
+          </div>
+          <div class="case-body">
+            <h3>Ski Club Sponsors Event</h3>
+            <p>Cut together a reel for USC's Ski Club featuring their sponsors. Filmed on an Insta360 Go Ultra.</p>
+            <ul>
+              <li>Assembled on Avid Media Composer</li>
+              <li>Motion graphics created on Adobe After Effects</li>
+            </ul>
+          </div>
+        </article>
+        <article class="case-card">
+          <div class="case-media">
+            <video src="videos/editing/CinematicCoverage.mp4" autoplay loop muted playsinline class="fullscreen-video"></video>
+          </div>
+          <div class="case-body">
+            <h3>USC Student Films</h3>
+            <p>I created these short films in the spring semester of my 2024/2025 year at USC's School of Cinematic Arts.</p>
+            <ul>
+              <li>Assembled on Adobe Premiere Pro</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="workflow" aria-label="Editing workflow">
+      <div class="workflow-card">
+        <h2>Process</h2>
+        <p>A clear, efficient workflow from assembly through delivery.</p>
+        <ul>
+          <li>I assemble the edit in Avid using organized selects and pulls.</li>
+          <li>I refine rhythm and structure through editorial passes with annotated review exports.</li>
+          <li>I build temp sound and graphics, with temp color created in DaVinci Resolve.</li>
+          <li>I deliver final masters in ProRes and H.264.</li>
+        </ul>
+      </div>
+      <div class="workflow-image">
+        <h2>Murch's Rule of Six</h2>
+        <p>My editing is grounded in Walter Murch's Rule of Six, always considering the viewer's gaze.</p>
+        <img src="Ruleof6.png" alt="Rule of 6">
+      </div>
+      <div class="workflow-card">
+        <h2>Toolset</h2>
+        <ul>
+          <li>Avid Media Composer</li>
+          <li>Adobe Premiere Pro</li>
+          <li>Adobe After Effects</li>
+          <li>DaVinci Resolve 20</li>
+          <li>AutoDesk Maya</li>
+          <li>Blender</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js" defer></script>
+  <script>
+    // Fullscreen video functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const fullscreenVideos = document.querySelectorAll('.fullscreen-video');
+      
+      // Handle video cycling for slideshow videos in thumbnails
+      const slideshowVideos = document.querySelectorAll('.slideshow-video');
+      slideshowVideos.forEach((video) => {
+        const videosData = video.getAttribute('data-videos');
+        if (videosData) {
+          const videoList = JSON.parse(videosData);
+          let currentIndex = 0;
+          
+          // Start with first video
+          video.src = videoList[0];
+          video.loop = false; // Disable loop so 'ended' event fires
+          
+          // Cycle through videos
+          const cycleVideo = () => {
+            currentIndex = (currentIndex + 1) % videoList.length;
+            video.src = videoList[currentIndex];
+            video.load();
+            video.play().catch(e => console.log('Play failed:', e));
+          };
+          
+          video.addEventListener('ended', cycleVideo);
+        }
+      });
+      
+      fullscreenVideos.forEach((fullscreenVideo) => {
+        const openFullscreen = () => {
+          // Check if this is a slideshow video
+          const videosData = fullscreenVideo.getAttribute('data-videos');
+          const isSlideshow = videosData !== null;
+          
+          // Create overlay
+          const overlay = document.createElement('div');
+          overlay.className = 'fullscreen-overlay';
+          
+          // Create video element for fullscreen
+          const fullscreenVideoEl = document.createElement('video');
+          fullscreenVideoEl.controls = true;
+          fullscreenVideoEl.autoplay = true;
+          fullscreenVideoEl.loop = false;
+          fullscreenVideoEl.muted = false;
+          
+          if (isSlideshow) {
+            // Handle slideshow
+            const videoList = JSON.parse(videosData);
+            let currentIndex = 0;
+            
+            const playNextVideo = () => {
+              if (currentIndex < videoList.length) {
+                fullscreenVideoEl.src = videoList[currentIndex];
+                fullscreenVideoEl.load();
+                fullscreenVideoEl.play().catch(e => console.log('Play failed:', e));
+              }
+            };
+            
+            fullscreenVideoEl.addEventListener('ended', () => {
+              currentIndex++;
+              if (currentIndex < videoList.length) {
+                playNextVideo();
+              } else {
+                // Loop back to start
+                currentIndex = 0;
+                playNextVideo();
+              }
+            });
+            
+            playNextVideo();
+          } else {
+            // Single video
+            fullscreenVideoEl.src = fullscreenVideo.src;
+            fullscreenVideoEl.play().catch(e => console.log('Play failed:', e));
+          }
+          
+          // Create close button
+          const closeButton = document.createElement('button');
+          closeButton.innerHTML = '×';
+          closeButton.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            font-size: 28px;
+            font-weight: 300;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+            transition: all 0.3s ease;
+            outline: none;
+            line-height: 1;
+            padding: 0;
+            margin: 0;
+          `;
+          closeButton.addEventListener('mouseenter', () => {
+            closeButton.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            closeButton.style.borderColor = 'rgba(255, 255, 255, 0.6)';
+            closeButton.style.transform = 'scale(1.1)';
+          });
+          closeButton.addEventListener('mouseleave', () => {
+            closeButton.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+            closeButton.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+            closeButton.style.transform = 'scale(1)';
+          });
+          
+          overlay.appendChild(fullscreenVideoEl);
+          overlay.appendChild(closeButton);
+          document.body.appendChild(overlay);
+          
+          // Close on click outside video or ESC key
+          const closeOverlay = () => {
+            fullscreenVideoEl.pause();
+            overlay.remove();
+            document.removeEventListener('keydown', handleEscape);
+          };
+          
+          closeButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeOverlay();
+          });
+          
+          overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+              closeOverlay();
+            }
+          });
+          
+          const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+              closeOverlay();
+            }
+          };
+          
+          document.addEventListener('keydown', handleEscape);
+        };
+        
+        // Make video clickable
+        fullscreenVideo.addEventListener('click', openFullscreen);
+        
+        // Make entire case-card clickable if it contains this video
+        const caseCard = fullscreenVideo.closest('.case-card');
+        if (caseCard) {
+          caseCard.addEventListener('click', (e) => {
+            // Don't trigger if clicking directly on the video (already handled)
+            if (e.target !== fullscreenVideo && !fullscreenVideo.contains(e.target)) {
+              openFullscreen();
+            }
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+

@@ -1,164 +1,155 @@
+:root {
+  --about-max-width: 1200px;
+  --about-panel-bg: rgba(4, 4, 8, 0.55);
+  --about-border: rgba(255, 255, 255, 0.12);
+  --about-accent: #7fd2ff;
+}
+
 body {
-    padding-top: 140px;
-    margin: 0;
-    
-    background: linear-gradient(to bottom, #1a1a1a, #000000);
-    font-family: 'acier-bat-noir', sans-serif;
-    color: white;
-    min-height: 100vh;
+  background-color: #03030a;
+  color: #f5f5f5;
 }
 
-.top-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 0;
-    z-index: 1000;
-    box-sizing: border-box;
+.vfx-theme .nav-divider {
+  border-bottom-color: rgba(255, 255, 255, 0.45);
 }
 
-.home-button {
-    margin-left: 40px;
-    font-size: 28px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+.vfx-theme .primary-nav a {
+  color: #fff;
 }
 
-.nav-links {
-    display: flex;
-    gap: 20px;
-    position: relative;
-    left: -60px;
+.vfx-theme .primary-nav a:hover::after,
+.vfx-theme .primary-nav a:focus-visible::after,
+.vfx-theme .primary-nav a[aria-current="page"]::after {
+  background: #fff;
 }
 
-.nav-button {
-  color: white;
-  text-decoration: none;
-  font-family: "headline-gothic-atf-rough-n1", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 18px;
-  padding: 8px 16px;
-  border: 2px solid white;
-  border-radius: 20px;
-  transition: all 0.3s;
+.about-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 1.5rem clamp(1.5rem, 4vw, 4rem) 5rem;
 }
 
-.nav-button:hover {
-  background: white;
-  color: #2a5298;
+.about-content {
+  width: 100%;
+  max-width: var(--about-max-width);
+  margin: 0 auto;
 }
 
-.old-nav-button {
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+  align-items: start;
 }
 
+.about-image-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.content {
-    max-width: 1200px;
-    margin: 50px auto 2rem auto;
-    padding: 0 2rem;
+.about-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--about-panel-bg);
+  border: 1px solid var(--about-border);
 }
 
-.about-container {
-    display: flex;
-    gap: 4rem;
-    align-items: flex-start;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 3rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
+.school-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
 }
 
-.profile-image {
-    flex: 0 0 40%;
+.school-logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
-.profile-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+.school-logo:hover {
+  opacity: 1;
+}
+
+.school-logo:last-child {
+  height: 90px;
+  margin-top: 1.5rem;
+}
+
+.image-slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slideshow-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slideshow-image.active {
+  opacity: 1;
+}
+
+.image-slideshow img[src="imaxphoto.png"] {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.15);
 }
 
 .about-text {
-    flex: 1;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  line-height: 1.8;
+  color: rgba(245, 245, 245, 0.9);
 }
 
-h1 {
-    font-size: 3rem;
-    margin: 0 0 1.5rem 0;
-    color: white;
+.about-text p {
+  margin: 0 0 1.5rem 0;
 }
 
-p {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: #f0f0f0;
-    margin: 0;
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 968px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .about-image-section {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .about-image-container {
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
-    body {
-        padding-top: 90px;
-    }
-    .top-bar {
-        padding: 10px 15px;
-        justify-content: center;
-    }
-
-    .nav-links {
-        display: none;
-    }
-
-    .home-button {
-    margin-left: 40px;
-        font-size: 24px;
-        position: static;
-    }
-
-    .content {
-        margin-top: 150px;
-        padding: 0 1rem;
-    }
-
-    .about-container {
-        flex-direction: column;
-        gap: 2rem;
-        padding: 1.5rem;
-    }
-
-    .profile-image {
-        flex: 0 0 100%;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    p {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .about-container {
-        padding: 1rem;
-    }
-
-    h1 {
-        font-size: 1.75rem;
-    }
-
-    p {
-        font-size: 0.9rem;
-    }
+  .about-grid {
+    gap: 2rem;
+  }
+  
+  .about-image-section {
+    max-width: 100%;
+  }
 }

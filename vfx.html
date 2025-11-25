@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes">
+  <title>VFX · Alexander Barsanti</title>
+
+  <link rel="dns-prefetch" href="https://use.typekit.net">
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+
+  <link rel="preload" href="style.css" as="style">
+  <link rel="stylesheet" href="https://use.typekit.net/yyf0myj.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="vfx.css">
+</head>
+<body class="vfx-theme">
+  <button class="hamburger-menu" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="menu-backdrop" id="menuBackdrop"></div>
+  <div class="menu-overlay" id="menuOverlay">
+    <nav class="menu-nav">
+      <a href="editing.html">Editing</a>
+      <a href="color-grading.html">Color Grading</a>
+      <a href="vfx.html">VFX</a>
+      <a href="imax-workshop.html">IMAX Workshop</a>
+      <a href="production-stills.html">Production Stills</a>
+    </nav>
+  </div>
+
+  <div class="header-stack">
+    <header class="site-header">
+      <div class="branding">
+        <div class="name-lockup">
+          <span class="name-first">Alexander</span>
+          <span class="name-last">Barsanti</span>
+        </div>
+        <span class="portfolio-label">Portfolio</span>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/alexbarsanti" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <img src="linkedinlogo.png" alt="LinkedIn icon">
+        </a>
+        <a href="mailto:AlexBarsanti5@gmail.com" aria-label="Email Alex">
+          <img src="emaillogo.png" alt="Email icon">
+        </a>
+      </div>
+    </header>
+
+    <div class="nav-divider" aria-hidden="true"></div>
+
+    <nav class="primary-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="Alexander_Barsanti_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <main class="vfx-page">
+    <section class="color-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">VFX Supervision · Compositing</p>
+        <h1>Visual effects that blend CG, design, and live-action photography.</h1>
+      </div>
+    </section>
+
+    <section class="case-studies" aria-label="Recent VFX projects">
+      <div class="case-grid">
+        <article class="case-card">
+          <div class="case-media">
+            <video class="slideshow-video" data-videos='["videos/vfx/animation/MusicVideoVFX.mp4", "videos/vfx/animation/video3.mp4", "videos/vfx/animation/video4.mp4", "videos/vfx/animation/video5.mp4", "videos/vfx/animation/video6.MP4", "videos/vfx/animation/video7.mp4", "videos/vfx/animation/video8.mp4", "videos/vfx/animation/video9.mp4"]' autoplay loop muted playsinline volume="0"></video>
+          </div>
+          <div class="case-body">
+            <h3>Animation</h3>
+            <p>At CalArts, I gained a foundational education in animation, and the history of the medium, from Disney animators, modelers, and riggers.</p>
+            <ul>
+              <li>Autodesk Maya</li>
+              <li>Blender</li>
+              <li>Houdini</li>
+            </ul>
+          </div>
+        </article>
+        <article class="case-card">
+          <div class="case-media">
+            <video class="slideshow-video" data-videos='["videos/vfx/compositing/fallcomposite.mp4", "videos/vfx/compositing/frisbeecomposite.mp4", "videos/vfx/compositing/stopmocomposite.mp4"]' autoplay loop muted playsinline volume="0"></video>
+          </div>
+          <div class="case-body">
+            <h3>Compositing</h3>
+            <ul>
+              <li>Integrated 3D renders with live-action plates using multi-pass workflows</li>
+              <li>Matched lighting, shadows, and color to unify CG assets with practical photography</li>
+              <li>Adobe After Effects</li>
+            </ul>
+          </div>
+        </article>
+        <article class="case-card">
+          <div class="case-media">
+            <video class="slideshow-video" data-videos='["videos/vfx/Motion Graphics/15DaysLeft.mp4", "videos/vfx/Motion Graphics/snowsponsors.mp4", "videos/vfx/Motion Graphics/video10.MP4", "videos/vfx/Motion Graphics/video11.mp4"]' autoplay loop muted playsinline volume="0"></video>
+          </div>
+          <div class="case-body">
+            <h3>Motion Graphics</h3>
+            <ul>
+              <li>I design text and graphic elements in Illustrator and Adobe Photoshop</li>
+              <li>Those designs come to life in Adobe After Effects through animation and timing</li>
+              <li>I then integrate motion graphics into live-action shots when the project calls for it</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="workflow" aria-label="VFX workflow">
+      <div class="shot-breakdown-card">
+        <h2>Shot Breakdown</h2>
+        <div class="breakdown-content">
+          <div class="breakdown-media">
+            <div class="breakdown-image-container">
+              <img src="videos/vfx/greenscreenshot.png" alt="Green screen plate" class="breakdown-image">
+            </div>
+            <div class="breakdown-video-container">
+              <video src="videos/FallShot.mp4" autoplay loop muted playsinline class="breakdown-video fullscreen-video"></video>
+            </div>
+            <p class="breakdown-caption">This is the original green-screen plate alongside the completed final shot.</p>
+          </div>
+          <div class="breakdown-bullets">
+            <p class="breakdown-intro">This sequence began with a green-screen plate of the protagonist, captured with controlled key lighting and practical wind elements to integrate naturally with the intended environment.</p>
+            <ul>
+              <li>To build the digital environment, I reconstructed the shot in Blender, matching the live-action camera's focal length, sensor size, and lens characteristics to ensure parallax and spatial continuity between the plate and the CG elements.</li>
+              <li>For the interactive movement in the scene, I generated a cloth simulation on a stand-in model proportioned to the actor. This allowed the simulated fabric to react believably to the same wind direction and intensity present during production.</li>
+              <li>With the 3D renders completed, I transitioned into Adobe After Effects for compositing. There, I tracked the live-action plate, integrated the CG simulation, refined the edges and lighting interactions, and executed the final color treatment to align with the director's stylistic intent.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js" defer></script>
+  <script>
+    // Fullscreen video functionality and video cycling
+    document.addEventListener('DOMContentLoaded', () => {
+      const fullscreenVideos = document.querySelectorAll('.fullscreen-video');
+      
+      // Handle video cycling for slideshow videos in thumbnails
+      const slideshowVideos = document.querySelectorAll('.slideshow-video');
+      slideshowVideos.forEach((video) => {
+        const videosData = video.getAttribute('data-videos');
+        if (videosData) {
+          const videoList = JSON.parse(videosData);
+          let currentIndex = 0;
+          
+          // Start with first video
+          video.src = videoList[0];
+          video.loop = false; // Disable loop so 'ended' event fires
+          video.muted = true; // Always muted in thumbnail
+          video.volume = 0; // Ensure volume is 0
+          
+          // Cycle through videos
+          const cycleVideo = () => {
+            currentIndex = (currentIndex + 1) % videoList.length;
+            video.src = videoList[currentIndex];
+            video.muted = true; // Always muted in thumbnail
+            video.volume = 0; // Ensure volume is 0
+            video.load();
+            video.play().catch(e => console.log('Play failed:', e));
+          };
+          
+          video.addEventListener('ended', cycleVideo);
+        }
+      });
+      
+      // Function to create video slideshow fullscreen
+      function openVideoSlideshow(videoSources, startIndex = 0) {
+        // Create overlay
+        const overlay = document.createElement('div');
+        overlay.className = 'fullscreen-overlay';
+        
+        // Create slideshow structure
+        const slideshowContainer = document.createElement('div');
+        slideshowContainer.className = 'vfx-video-slideshow';
+        
+        const slidesWrapper = document.createElement('div');
+        slidesWrapper.className = 'vfx-slides-wrapper';
+        
+        const slidesContainer = document.createElement('div');
+        slidesContainer.className = 'vfx-slides';
+        
+        // Create video elements for each source
+        videoSources.forEach((src, index) => {
+          const video = document.createElement('video');
+          video.src = src;
+          video.controls = true;
+          // Mute only frisbeecomposite video, unmute all others in fullscreen
+          video.muted = src.includes('frisbeecomposite');
+          if (!src.includes('frisbeecomposite')) {
+            video.volume = 1; // Unmute for fullscreen
+          }
+          video.loop = false;
+          video.className = 'vfx-slide';
+          if (index === startIndex) {
+            video.classList.add('active');
+            video.autoplay = true;
+          }
+          slidesContainer.appendChild(video);
+        });
+        
+        // Create navigation buttons
+        const prevButton = document.createElement('button');
+        prevButton.className = 'vfx-prev';
+        prevButton.innerHTML = '‹';
+        prevButton.setAttribute('aria-label', 'Previous video');
+        
+        const nextButton = document.createElement('button');
+        nextButton.className = 'vfx-next';
+        nextButton.innerHTML = '›';
+        nextButton.setAttribute('aria-label', 'Next video');
+        
+        // Create slide counter
+        const slideCounter = document.createElement('div');
+        slideCounter.className = 'vfx-slide-counter';
+        slideCounter.textContent = `${startIndex + 1} / ${videoSources.length}`;
+        
+        // Create close button
+        const closeButton = document.createElement('button');
+        closeButton.className = 'vfx-close';
+        closeButton.innerHTML = '×';
+        closeButton.setAttribute('aria-label', 'Close fullscreen');
+        
+        slidesWrapper.appendChild(slidesContainer);
+        slideshowContainer.appendChild(slidesWrapper);
+        slideshowContainer.appendChild(prevButton);
+        slideshowContainer.appendChild(nextButton);
+        slideshowContainer.appendChild(slideCounter);
+        slideshowContainer.appendChild(closeButton);
+        overlay.appendChild(slideshowContainer);
+        document.body.appendChild(overlay);
+        
+        // Slideshow state
+        let currentIndex = startIndex;
+        const slides = slidesContainer.querySelectorAll('.vfx-slide');
+        
+        function showSlide(index) {
+          // Pause all videos first
+          slides.forEach((slide) => {
+            slide.pause();
+            slide.currentTime = 0;
+            slide.classList.remove('active');
+          });
+          
+          // Show and play the selected video
+          if (slides[index]) {
+            const currentVideo = slides[index];
+            // Mute only if it's frisbeecomposite, otherwise unmute for fullscreen
+            currentVideo.muted = videoSources[index].includes('frisbeecomposite');
+            if (!videoSources[index].includes('frisbeecomposite')) {
+              currentVideo.volume = 1; // Unmute for fullscreen
+            }
+            currentVideo.classList.add('active');
+            currentVideo.play().catch(e => console.log('Play failed:', e));
+          }
+          slideCounter.textContent = `${index + 1} / ${videoSources.length}`;
+        }
+        
+        function nextSlide() {
+          currentIndex = (currentIndex + 1) % videoSources.length;
+          showSlide(currentIndex);
+        }
+        
+        function prevSlide() {
+          currentIndex = (currentIndex - 1 + videoSources.length) % videoSources.length;
+          showSlide(currentIndex);
+        }
+        
+        // Event listeners
+        prevButton.addEventListener('click', (e) => {
+          e.stopPropagation();
+          prevSlide();
+        });
+        
+        nextButton.addEventListener('click', (e) => {
+          e.stopPropagation();
+          nextSlide();
+        });
+        
+        closeButton.addEventListener('click', (e) => {
+          e.stopPropagation();
+          closeOverlay();
+        });
+        
+        const closeOverlay = () => {
+          slides.forEach(slide => slide.pause());
+          overlay.remove();
+          document.removeEventListener('keydown', handleKeyboard);
+        };
+        
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) {
+            closeOverlay();
+          }
+        });
+        
+        const handleKeyboard = (e) => {
+          if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            prevSlide();
+          } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            nextSlide();
+          } else if (e.key === 'Escape') {
+            closeOverlay();
+          }
+        };
+        
+        document.addEventListener('keydown', handleKeyboard);
+        
+        // Play first video
+        showSlide(startIndex);
+      }
+      
+      // Handle single videos (like video5)
+      fullscreenVideos.forEach((fullscreenVideo) => {
+        fullscreenVideo.addEventListener('click', () => {
+          openVideoSlideshow([fullscreenVideo.src], 0);
+        });
+        
+        // Make entire case-card clickable
+        const caseCard = fullscreenVideo.closest('.case-card');
+        if (caseCard) {
+          caseCard.addEventListener('click', (e) => {
+            if (e.target !== fullscreenVideo && !fullscreenVideo.contains(e.target)) {
+              openVideoSlideshow([fullscreenVideo.src], 0);
+            }
+          });
+        }
+      });
+      
+      // Handle slideshow videos (multiple videos)
+      slideshowVideos.forEach((slideshowVideo) => {
+        slideshowVideo.addEventListener('click', () => {
+          const videosData = slideshowVideo.getAttribute('data-videos');
+          if (videosData) {
+            const videoList = JSON.parse(videosData);
+            // Find current index based on current video src
+            let currentIndex = 0;
+            const currentSrc = slideshowVideo.src;
+            videoList.forEach((src, index) => {
+              if (src === currentSrc || currentSrc.includes(src.split('/').pop())) {
+                currentIndex = index;
+              }
+            });
+            openVideoSlideshow(videoList, currentIndex);
+          }
+        });
+        
+        // Make entire case-card clickable
+        const caseCard = slideshowVideo.closest('.case-card');
+        if (caseCard) {
+          caseCard.addEventListener('click', (e) => {
+            if (e.target !== slideshowVideo && !slideshowVideo.contains(e.target)) {
+              const videosData = slideshowVideo.getAttribute('data-videos');
+              if (videosData) {
+                const videoList = JSON.parse(videosData);
+                openVideoSlideshow(videoList, 0);
+              }
+            }
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+

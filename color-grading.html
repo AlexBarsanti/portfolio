@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes">
+  <title>Color Grading · Alexander Barsanti</title>
+
+  <link rel="dns-prefetch" href="https://use.typekit.net">
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+
+  <link rel="preload" href="style.css" as="style">
+  <link rel="stylesheet" href="https://use.typekit.net/yyf0myj.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="vfx.css">
+</head>
+<body class="vfx-theme">
+  <button class="hamburger-menu" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="menu-backdrop" id="menuBackdrop"></div>
+  <div class="menu-overlay" id="menuOverlay">
+    <nav class="menu-nav">
+      <a href="editing.html">Editing</a>
+      <a href="color-grading.html">Color Grading</a>
+      <a href="vfx.html">VFX</a>
+      <a href="imax-workshop.html">IMAX Workshop</a>
+      <a href="production-stills.html">Production Stills</a>
+    </nav>
+  </div>
+
+  <div class="header-stack">
+    <header class="site-header">
+      <div class="branding">
+        <div class="name-lockup">
+          <span class="name-first">Alexander</span>
+          <span class="name-last">Barsanti</span>
+        </div>
+        <span class="portfolio-label">Portfolio</span>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/alexbarsanti" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <img src="linkedinlogo.png" alt="LinkedIn icon">
+        </a>
+        <a href="mailto:AlexBarsanti5@gmail.com" aria-label="Email Alex">
+          <img src="emaillogo.png" alt="Email icon">
+        </a>
+      </div>
+    </header>
+
+    <div class="nav-divider" aria-hidden="true"></div>
+
+    <nav class="primary-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="Alexander_Barsanti_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <main class="vfx-page">
+    <section class="color-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Color Direction · Finishing</p>
+        <h1>Color crafted for clarity, mood, and visual impact.</h1>
+      </div>
+    </section>
+
+    <section class="case-studies" aria-label="Recent Color Grading projects">
+      <p class="eyebrow">samples</p>
+      <div class="color-video-grid">
+        <div class="color-video-item">
+          <video src="videos/color grading/looseendscolor.mp4" autoplay loop muted playsinline class="color-fullscreen-video"></video>
+        </div>
+        <div class="color-video-item">
+          <video src="videos/color grading/circlescolor.mp4" autoplay loop muted playsinline class="color-fullscreen-video"></video>
+        </div>
+        <div class="color-video-item">
+          <video src="videos/color grading/studentfilmscolor1.mp4" autoplay loop muted playsinline class="color-fullscreen-video" data-next-video="videos/color grading/studentfilmscolor2.mp4"></video>
+        </div>
+      </div>
+    </section>
+
+    <section class="workflow" aria-label="Color workflow">
+      <div class="shot-breakdown-card">
+        <h2>Shot Breakdown from Loose Ends Music Video</h2>
+        <div class="breakdown-content">
+          <div class="breakdown-image-container">
+            <img src="videos/color grading/colorbreakdown.png" alt="DaVinci Resolve Color Grading Breakdown" class="breakdown-image">
+          </div>
+          <div class="breakdown-bullets">
+            <ul>
+              <li>I start by doing a clean primary balance, getting the exposure and contrast into a natural place without losing any dynamic range.</li>
+              <li>Then I dial in the white balance so the skin tones and neutrals feel accurate before building the look.</li>
+              <li>Using the HDR wheels, I add a subtle blue tint into the shadows and highlights to push the cooler mood while keeping everything controlled.</li>
+              <li>In the curves, I fine-tune the channels to keep the RGB waveform clean and make sure the sky and highlights stay intact.</li>
+              <li>Finally, I apply some creative color shaping and film grain to give the shot a polished, filmic finish.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js" defer></script>
+  <script>
+    // Fullscreen video functionality for color videos
+    document.addEventListener('DOMContentLoaded', () => {
+      const colorVideos = document.querySelectorAll('.color-fullscreen-video');
+      
+      colorVideos.forEach((video) => {
+        video.addEventListener('click', () => {
+          // Check if this video has a next video to play
+          const nextVideoSrc = video.getAttribute('data-next-video');
+          const isSequential = nextVideoSrc !== null;
+          
+          // Create fullscreen overlay
+          const overlay = document.createElement('div');
+          overlay.className = 'color-video-fullscreen-overlay';
+          overlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+          `;
+          
+          // Create close button
+          const closeButton = document.createElement('button');
+          closeButton.innerHTML = '×';
+          closeButton.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            font-size: 28px;
+            font-weight: 300;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+            transition: all 0.3s ease;
+            outline: none;
+            line-height: 1;
+            padding: 0;
+            margin: 0;
+          `;
+          closeButton.addEventListener('mouseenter', () => {
+            closeButton.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            closeButton.style.borderColor = 'rgba(255, 255, 255, 0.6)';
+            closeButton.style.transform = 'scale(1.1)';
+          });
+          closeButton.addEventListener('mouseleave', () => {
+            closeButton.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+            closeButton.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+            closeButton.style.transform = 'scale(1)';
+          });
+          
+          // Create video element for fullscreen
+          const fullscreenVideo = document.createElement('video');
+          fullscreenVideo.src = video.src;
+          fullscreenVideo.controls = true;
+          fullscreenVideo.autoplay = true;
+          fullscreenVideo.loop = !isSequential;
+          fullscreenVideo.muted = false;
+          fullscreenVideo.style.cssText = `
+            max-width: 95vw;
+            max-height: 95vh;
+            object-fit: contain;
+            border-radius: 12px;
+            outline: none;
+          `;
+          
+          // Handle sequential playback for student films
+          if (isSequential) {
+            fullscreenVideo.addEventListener('ended', () => {
+              fullscreenVideo.src = nextVideoSrc;
+              fullscreenVideo.load();
+              fullscreenVideo.play().catch(e => console.log('Play failed:', e));
+            });
+          }
+          
+          overlay.appendChild(fullscreenVideo);
+          overlay.appendChild(closeButton);
+          document.body.appendChild(overlay);
+          
+          // Close handlers
+          const closeOverlay = () => {
+            fullscreenVideo.pause();
+            overlay.remove();
+            document.removeEventListener('keydown', handleEscape);
+          };
+          
+          closeButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeOverlay();
+          });
+          
+          overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+              closeOverlay();
+            }
+          });
+          
+          fullscreenVideo.addEventListener('click', (e) => {
+            e.stopPropagation();
+          });
+          
+          const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+              closeOverlay();
+            }
+          };
+          
+          document.addEventListener('keydown', handleEscape);
+        });
+      });
+    });
+    
+    // Fullscreen image functionality for breakdown image
+    document.addEventListener('DOMContentLoaded', () => {
+      const breakdownImage = document.querySelector('.breakdown-image');
+      const breakdownContainer = document.querySelector('.breakdown-image-container');
+      
+      if (breakdownImage && breakdownContainer) {
+        breakdownContainer.addEventListener('click', () => {
+          // Create fullscreen overlay
+          const overlay = document.createElement('div');
+          overlay.className = 'breakdown-fullscreen-overlay';
+          overlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+          `;
+          
+          // Create close button
+          const closeButton = document.createElement('button');
+          closeButton.innerHTML = '×';
+          closeButton.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            font-size: 28px;
+            font-weight: 300;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+            transition: all 0.3s ease;
+            outline: none;
+            line-height: 1;
+            padding: 0;
+            margin: 0;
+          `;
+          closeButton.addEventListener('mouseenter', () => {
+            closeButton.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            closeButton.style.borderColor = 'rgba(255, 255, 255, 0.6)';
+            closeButton.style.transform = 'scale(1.1)';
+          });
+          closeButton.addEventListener('mouseleave', () => {
+            closeButton.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+            closeButton.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+            closeButton.style.transform = 'scale(1)';
+          });
+          
+          // Create image element for fullscreen
+          const fullscreenImg = document.createElement('img');
+          fullscreenImg.src = breakdownImage.src;
+          fullscreenImg.alt = breakdownImage.alt;
+          fullscreenImg.style.cssText = `
+            max-width: 95vw;
+            max-height: 95vh;
+            object-fit: contain;
+            border-radius: 12px;
+          `;
+          
+          overlay.appendChild(fullscreenImg);
+          overlay.appendChild(closeButton);
+          document.body.appendChild(overlay);
+          
+          // Close on click outside image or ESC key
+          const closeOverlay = () => {
+            overlay.remove();
+          };
+          
+          closeButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeOverlay();
+          });
+          
+          overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+              closeOverlay();
+            }
+          });
+          
+          fullscreenImg.addEventListener('click', (e) => {
+            e.stopPropagation();
+          });
+          
+          const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+              closeOverlay();
+              document.removeEventListener('keydown', handleEscape);
+            }
+          };
+          
+          document.addEventListener('keydown', handleEscape);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

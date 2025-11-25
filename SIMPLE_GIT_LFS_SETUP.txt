@@ -1,0 +1,45 @@
+Copy and paste these commands one at a time into your terminal:
+
+# 1. Navigate to your portfolio folder
+cd /Users/alexbarsanti/Downloads/myportfolio
+
+# 2. Download Git LFS binary (if the first URL doesn't work, we'll try an alternative)
+cd /tmp
+curl -L "https://github.com/git-lfs/git-lfs/releases/download/v3.7.1/git-lfs-darwin-amd64-v3.7.1.tar.gz" -o git-lfs.tar.gz
+
+# 3. Extract it
+tar -xzf git-lfs.tar.gz
+
+# 4. Find the binary and install it
+cd git-lfs-darwin-amd64-v3.7.1 2>/dev/null || find . -name "git-lfs" -type f | head -1 | xargs dirname
+sudo cp git-lfs /usr/local/bin/ 2>/dev/null || find . -name "git-lfs" -type f -exec sudo cp {} /usr/local/bin/ \;
+
+# 5. Make it executable
+sudo chmod +x /usr/local/bin/git-lfs
+
+# 6. Verify it works
+git-lfs version
+
+# 7. Initialize Git LFS
+git-lfs install
+
+# 8. Go back to your portfolio folder
+cd /Users/alexbarsanti/Downloads/myportfolio
+
+# 9. Set up Git LFS to track your video files
+git lfs track "*.mp4"
+git lfs track "*.MOV"
+git lfs track "*.mov"
+
+# 10. Add the .gitattributes file that Git LFS created
+git add .gitattributes
+
+# 11. Add all your other files
+git add .
+
+# 12. Commit everything
+git commit -m "Add portfolio files with Git LFS for large videos"
+
+# 13. Push to GitHub (replace with your GitHub username/repo if different)
+git push -u origin main
+

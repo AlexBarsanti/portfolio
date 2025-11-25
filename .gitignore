@@ -1,0 +1,27 @@
+# Backup files
+*.backup
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local
+
+# Large media files (optional - uncomment if you want to host videos elsewhere)
+# *.mp4
+# *.MOV
+# *.mov
+
