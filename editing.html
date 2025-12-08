@@ -99,7 +99,7 @@
         </article>
         <article class="case-card">
           <div class="case-media">
-            <video src="videos/editing/CinematicCoverage.mp4" autoplay loop muted playsinline class="fullscreen-video"></video>
+            <video src="videos/editing/IML202 Narrative.mp4" autoplay loop muted playsinline class="fullscreen-video slideshow-video" data-videos='["videos/editing/IML202 Narrative.mp4", "videos/editing/IML202 Experimental.mp4", "videos/editing/CinematicCoverage.mp4"]' data-thumbnail-videos='["videos/editing/IML202 Narrative.mp4", "videos/editing/IML202 Experimental.mp4"]'></video>
           </div>
           <div class="case-body">
             <h3>USC Student Films</h3>
@@ -151,7 +151,9 @@
       // Handle video cycling for slideshow videos in thumbnails
       const slideshowVideos = document.querySelectorAll('.slideshow-video');
       slideshowVideos.forEach((video) => {
-        const videosData = video.getAttribute('data-videos');
+        // Check for thumbnail-specific videos first, otherwise use data-videos
+        const thumbnailVideosData = video.getAttribute('data-thumbnail-videos');
+        const videosData = thumbnailVideosData || video.getAttribute('data-videos');
         if (videosData) {
           const videoList = JSON.parse(videosData);
           let currentIndex = 0;
@@ -189,31 +191,139 @@
           fullscreenVideoEl.loop = false;
           fullscreenVideoEl.muted = false;
           
+          let currentIndex = 0;
+          let videoList = [];
+          
           if (isSlideshow) {
             // Handle slideshow
-            const videoList = JSON.parse(videosData);
-            let currentIndex = 0;
+            videoList = JSON.parse(videosData);
+            currentIndex = 0;
             
-            const playNextVideo = () => {
-              if (currentIndex < videoList.length) {
+            const playVideoAtIndex = (index) => {
+              currentIndex = index;
+              if (currentIndex >= 0 && currentIndex < videoList.length) {
                 fullscreenVideoEl.src = videoList[currentIndex];
                 fullscreenVideoEl.load();
                 fullscreenVideoEl.play().catch(e => console.log('Play failed:', e));
               }
             };
             
+            const playNextVideo = () => {
+              currentIndex = (currentIndex + 1) % videoList.length;
+              playVideoAtIndex(currentIndex);
+            };
+            
+            const playPreviousVideo = () => {
+              currentIndex = (currentIndex - 1 + videoList.length) % videoList.length;
+              playVideoAtIndex(currentIndex);
+            };
+            
             fullscreenVideoEl.addEventListener('ended', () => {
-              currentIndex++;
-              if (currentIndex < videoList.length) {
-                playNextVideo();
-              } else {
-                // Loop back to start
-                currentIndex = 0;
-                playNextVideo();
-              }
+              playNextVideo();
             });
             
-            playNextVideo();
+            playVideoAtIndex(0);
+            
+            // Create navigation arrows
+            const leftArrow = document.createElement('button');
+            leftArrow.innerHTML = '‹';
+            leftArrow.style.cssText = `
+              position: fixed;
+              left: 20px;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 50px;
+              height: 50px;
+              background-color: rgba(0, 0, 0, 0.6);
+              color: white;
+              border: 2px solid rgba(255, 255, 255, 0.3);
+              border-radius: 50%;
+              font-size: 32px;
+              font-weight: 300;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              z-index: 10001;
+              transition: all 0.3s ease;
+              outline: none;
+              line-height: 1;
+              padding: 0;
+              margin: 0;
+            `;
+            leftArrow.addEventListener('mouseenter', () => {
+              leftArrow.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+              leftArrow.style.borderColor = 'rgba(255, 255, 255, 0.6)';
+              leftArrow.style.transform = 'translateY(-50%) scale(1.1)';
+            });
+            leftArrow.addEventListener('mouseleave', () => {
+              leftArrow.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+              leftArrow.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+              leftArrow.style.transform = 'translateY(-50%) scale(1)';
+            });
+            leftArrow.addEventListener('click', (e) => {
+              e.stopPropagation();
+              playPreviousVideo();
+            });
+            
+            const rightArrow = document.createElement('button');
+            rightArrow.innerHTML = '›';
+            rightArrow.style.cssText = `
+              position: fixed;
+              right: 20px;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 50px;
+              height: 50px;
+              background-color: rgba(0, 0, 0, 0.6);
+              color: white;
+              border: 2px solid rgba(255, 255, 255, 0.3);
+              border-radius: 50%;
+              font-size: 32px;
+              font-weight: 300;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              z-index: 10001;
+              transition: all 0.3s ease;
+              outline: none;
+              line-height: 1;
+              padding: 0;
+              margin: 0;
+            `;
+            rightArrow.addEventListener('mouseenter', () => {
+              rightArrow.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+              rightArrow.style.borderColor = 'rgba(255, 255, 255, 0.6)';
+              rightArrow.style.transform = 'translateY(-50%) scale(1.1)';
+            });
+            rightArrow.addEventListener('mouseleave', () => {
+              rightArrow.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+              rightArrow.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+              rightArrow.style.transform = 'translateY(-50%) scale(1)';
+            });
+            rightArrow.addEventListener('click', (e) => {
+              e.stopPropagation();
+              playNextVideo();
+            });
+            
+            overlay.appendChild(leftArrow);
+            overlay.appendChild(rightArrow);
+            
+            // Add keyboard navigation
+            const handleArrowKeys = (e) => {
+              if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                playPreviousVideo();
+              } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                playNextVideo();
+              }
+            };
+            document.addEventListener('keydown', handleArrowKeys);
+            
+            // Store handler for cleanup
+            overlay._arrowKeyHandler = handleArrowKeys;
           } else {
             // Single video
             fullscreenVideoEl.src = fullscreenVideo.src;
@@ -223,10 +333,11 @@
           // Create close button
           const closeButton = document.createElement('button');
           closeButton.innerHTML = '×';
+          const closeButtonRight = isSlideshow ? '90px' : '20px';
           closeButton.style.cssText = `
             position: fixed;
             top: 20px;
-            right: 20px;
+            right: ${closeButtonRight};
             width: 40px;
             height: 40px;
             background-color: rgba(0, 0, 0, 0.6);
@@ -266,6 +377,9 @@
             fullscreenVideoEl.pause();
             overlay.remove();
             document.removeEventListener('keydown', handleEscape);
+            if (overlay._arrowKeyHandler) {
+              document.removeEventListener('keydown', overlay._arrowKeyHandler);
+            }
           };
           
           closeButton.addEventListener('click', (e) => {
